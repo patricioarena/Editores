@@ -21,19 +21,6 @@ namespace ApiBackend.Controllers
             _logger = logger;
         }
 
-        [HttpGet, Route("Logger")]
-        public void loggerExamples()
-        {
-            _logger.LogInformation("LogInformation");
-            _logger.LogDebug("LogDebug");
-            _logger.LogWarning("LogWarning");
-            _logger.LogError("LogError");
-            _logger.LogCritical("LogCritical");
-            _logger.LogTrace("LogTrace");
-
-        }
-
-
         // GET api/values
         [HttpGet]
         public string[] Get()

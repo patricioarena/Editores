@@ -59,12 +59,6 @@ namespace Data.Models
             {
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Fecha)
-                    .HasColumnName("fecha")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.Last).HasColumnName("last");
-
                 entity.Property(e => e.Texto)
                     .IsRequired()
                     .HasColumnName("texto")

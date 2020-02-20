@@ -64,6 +64,17 @@ namespace ApiBackend
                 c.IncludeXmlComments(xmlPath);
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                );
+            });
+
+
             _logger.LogInformation("Added services");
         }
 
@@ -92,6 +103,7 @@ namespace ApiBackend
 
 
             app.UseRouting();
+            app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
 
@@ -102,11 +114,7 @@ namespace ApiBackend
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseCors(builder => builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                );
+            
         }
     }
 }
