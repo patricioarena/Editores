@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NgxEditorModule } from 'ngx-editor';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -28,6 +29,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { ModalComponent } from './modal/modal.component';
+import { EditorNgxEditorComponent } from './editor-ngx-editor/editor-ngx-editor.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { ModalComponent } from './modal/modal.component';
     HomeComponent,
     FooterComponent,
     HeaderComponent,
-    ModalComponent
+    ModalComponent,
+    EditorNgxEditorComponent
   ],
   imports: [
     ClipboardModule,
@@ -50,6 +53,7 @@ import { ModalComponent } from './modal/modal.component';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     NgxSpinnerModule,
+    NgxEditorModule ,
     TooltipModule.forRoot(),
     RoutingModule
   ],
