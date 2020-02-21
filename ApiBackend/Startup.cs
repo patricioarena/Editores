@@ -24,12 +24,12 @@ namespace ApiBackend
         private static OpenApiContact contact = new OpenApiContact { Email = "patricio.e.arena@gmail.com", Name = "Patricio Ernesto Antonio Arena" };
         private static OpenApiInfo Info = new OpenApiInfo { Title = "Editor de texto", Version = "v1", Contact = contact };
 
-        private readonly ILogger _logger;
+        private readonly ILogger _Logger;
         public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration, ILogger<Startup> logger, IHostEnvironment env)
         {
             Configuration = configuration;
-            _logger = logger;
+            _Logger = logger;
 
             var builder = new ConfigurationBuilder()
             .SetBasePath(env.ContentRootPath)
@@ -37,7 +37,6 @@ namespace ApiBackend
             .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
             .AddEnvironmentVariables();
             Configuration = builder.Build();
-
         }
 
 
@@ -47,7 +46,7 @@ namespace ApiBackend
         {
             services.AddDbContext<POCContext>(options =>
                 //options.UseSqlite(Configuration.GetConnectionString("SQLite")));
-            options.UseSqlServer(Configuration.GetConnectionString("SQLServer")));
+            options.UseSqlServer(Configuration.GetConnectionString("SQLServer2")));
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IConfiguration>(Configuration);
@@ -75,7 +74,7 @@ namespace ApiBackend
             });
 
 
-            _logger.LogInformation("Added services");
+            _Logger.LogInformation("Added services");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,7 +84,7 @@ namespace ApiBackend
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                _logger.LogInformation("In Development environment");
+                _Logger.LogInformation("In Development environment");
             }
             else
             {
