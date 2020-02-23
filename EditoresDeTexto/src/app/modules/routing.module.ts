@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { EditorNgxEditorComponent } from '../editor-ngx-editor/editor-ngx-editor.component';
-import { EditorQuillComponent } from '../editor-quill/editor-quill.component';
+import { EditorNgxQuillComponent } from '../editor-ngx-quill/editor-ngx-quill.component';
 
 
 const routes: Routes = [
@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'quill',
-    component: EditorQuillComponent,
+    component: EditorNgxQuillComponent,
     data: {title: 'Quill'}
   }
 ];

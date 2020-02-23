@@ -30,7 +30,7 @@ import { HeaderComponent } from './header/header.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { ModalComponent } from './modal/modal.component';
 import { EditorNgxEditorComponent } from './editor-ngx-editor/editor-ngx-editor.component';
-import { EditorQuillComponent } from './editor-quill/editor-quill.component';
+import { EditorNgxQuillComponent } from './editor-ngx-quill/editor-ngx-quill.component';
 import { QuillModule } from 'ngx-quill';
 
 @NgModule({
@@ -42,7 +42,7 @@ import { QuillModule } from 'ngx-quill';
     HeaderComponent,
     ModalComponent,
     EditorNgxEditorComponent,
-    EditorQuillComponent
+    EditorNgxQuillComponent
   ],
   imports: [
     ClipboardModule,

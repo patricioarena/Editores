@@ -6,11 +6,11 @@ import { NotificationService } from '../service/notification.service';
 import { TitleService } from '../service/title.service';
 
 @Component({
-  selector: 'app-editor-quill',
-  templateUrl: './editor-quill.component.html',
-  styleUrls: ['./editor-quill.component.scss']
+  selector: 'app-editor-ngx-quill',
+  templateUrl: './editor-ngx-quill.component.html',
+  styleUrls: ['./editor-ngx-quill.component.scss']
 })
-export class EditorQuillComponent implements OnInit {
+export class EditorNgxQuillComponent implements OnInit {
   // Editor
   editorStyle = {
     height: '30rem',
