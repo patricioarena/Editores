@@ -1,25 +1,46 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EscritoTexto } from '../modelos/EscritoTexto';
 import { EditorService } from '../service/editor.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { saveAs } from 'file-saver';
-import { resolve } from 'path';
-import { error } from 'util';
 import { NotificationService } from '../service/notification.service';
 import { TitleService } from '../service/title.service';
-import { EscritoTexto } from '../modelos/EscritoTexto';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-editor-quill',
+  templateUrl: './editor-quill.component.html',
+  styleUrls: ['./editor-quill.component.scss']
 })
+export class EditorQuillComponent implements OnInit {
+  // Editor
+  editorStyle = {
+    height: '30rem',
+  };
 
-export class HomeComponent implements OnInit {
-  // Editores
+  config = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+      ['blockquote', 'code-block'],
 
+      [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+      [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+      [{ 'direction': 'rtl' }],                         // text direction
 
-  // Editores
+      [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 
+      [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+      [{ 'font': [] }],
+      [{ 'align': [] }],
+
+      ['clean'],                                         // remove formatting button
+
+      ['link', 'image', 'video']                         // link and image, video
+    ]
+  };
+
+  // Editor
   title: String;
   escritoTexto_Titulo: String;
   escritoTexto_Texto: String;
@@ -39,8 +60,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.title = this.titleServive.APP_TITLE;
-    this.escritoTexto_Titulo = 'Titulo de escrito';
-    this.escritoTexto_Texto = 'Texto de escrito';
+    this.escritoTexto_Titulo = '';
+    this.escritoTexto_Texto = '';
   }
 
   Guardar() {
@@ -68,7 +89,4 @@ export class HomeComponent implements OnInit {
         // this.notificationService.showError('Error', message);
       });
   }
-
-
 }
-

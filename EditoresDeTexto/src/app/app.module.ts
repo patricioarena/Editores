@@ -30,6 +30,8 @@ import { HeaderComponent } from './header/header.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { ModalComponent } from './modal/modal.component';
 import { EditorNgxEditorComponent } from './editor-ngx-editor/editor-ngx-editor.component';
+import { EditorQuillComponent } from './editor-quill/editor-quill.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { EditorNgxEditorComponent } from './editor-ngx-editor/editor-ngx-editor.
     FooterComponent,
     HeaderComponent,
     ModalComponent,
-    EditorNgxEditorComponent
+    EditorNgxEditorComponent,
+    EditorQuillComponent
   ],
   imports: [
     ClipboardModule,
@@ -55,7 +58,8 @@ import { EditorNgxEditorComponent } from './editor-ngx-editor/editor-ngx-editor.
     NgxSpinnerModule,
     NgxEditorModule ,
     TooltipModule.forRoot(),
-    RoutingModule
+    RoutingModule,
+    QuillModule.forRoot()
   ],
   providers: [ EditorService, NgxSpinnerService, NotificationService, TitleService ],
   bootstrap: [AppComponent],

@@ -3,14 +3,16 @@
 </ngx-spinner>
 
 <section class="ss-style-triangles">
-  <!-- <div>
-    <button type="button" class="btn btn-success" (click)="Sin_editor()" [disabled]="isEnabled">
-      Sin editor de texto&nbsp;<i class="fa fa-ban fa-lg" aria-hidden="true"></i></button>
-  </div> -->
 
-  <div>
-    <button type="button" class="btn btn-success"  routerLink="/ngx-editor" [disabled]="isEnabled">
-      Ngx-Editor&nbsp;<i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i></button>
+  <div class="row" style="text-align: center;">
+    <div>
+      <button type="button" class="btn btn-success" routerLink="/ngx-editor" [disabled]="isEnabled">
+        Ngx-Editor&nbsp;<i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i></button>
+    </div>
+    <div>
+      <button type="button" class="btn btn-success" routerLink="/quill" [disabled]="isEnabled">
+        Quill&nbsp;<i class="fa fa-arrow-right fa-lg" aria-hidden="true"></i></button>
+    </div>
   </div>
 
 </section>

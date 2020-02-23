@@ -1,0 +1,41 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+
+<section class="ss-style-triangles">
+  <!-- <div>
+    <button type="button" class="btn btn-success" (click)="Sin_editor()" [disabled]="isEnabled">
+      Sin editor de texto&nbsp;<i class="fa fa-ban fa-lg" aria-hidden="true"></i></button>
+  </div> -->
+
+  <div>
+    <button type="button" class="btn btn-success"  routerLink="/home" [disabled]="isEnabled">
+      home&nbsp;<i class="fa fa-home fa-lg" aria-hidden="true"></i></button>
+  </div>
+
+</section>
+
+<div class="container" *ngIf="true">
+  <div class="form-group">
+    <textarea class="form-control" [placeholder]="'Enter title here...'" id="Textarea1" rows="1" style="resize: none;"
+      [(ngModel)]="escritoTexto_Titulo"></textarea>
+  </div>
+  <!-- <div class="form-group">
+    <textarea class="form-control" [placeholder]="'Enter text here...'" id="Textarea2" rows="13" style="resize: none;"
+      [(ngModel)]="escritoTexto_Texto"></textarea>
+  </div> -->
+
+  <div class="ngx-editor-container">
+    <quill-editor [(ngModel)]="escritoTexto_Texto" [styles]="editorStyle" [modules]="config"></quill-editor>
+  </div>
+
+</div>
+
+<br>
+
+<div class="container">
+  <div class="text-center">
+    <button type="button" class="btn btn-primary waves-effect waves-light" (click)='Guardar()'><i
+        class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp;Gueardar escrito</button>
+  </div>
+</div>
