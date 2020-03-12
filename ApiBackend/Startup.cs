@@ -46,7 +46,7 @@ namespace ApiBackend
         {
             services.AddDbContext<POCContext>(options =>
                 //options.UseSqlite(Configuration.GetConnectionString("SQLite")));
-            options.UseSqlServer(Configuration.GetConnectionString("SQLServer2")));
+            options.UseSqlServer(Configuration.GetConnectionString("SQLServer")));
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IConfiguration>(Configuration);
