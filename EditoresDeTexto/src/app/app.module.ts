@@ -31,7 +31,10 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { ModalComponent } from './modal/modal.component';
 import { EditorNgxEditorComponent } from './editor-ngx-editor/editor-ngx-editor.component';
 import { EditorNgxQuillComponent } from './editor-ngx-quill/editor-ngx-quill.component';
+import { EditorNg2CKEditorComponent } from './editor-ng2-ckeditor/editor-ng2-ckeditor.component';
 import { QuillModule } from 'ngx-quill';
+import { CKEditorModule } from 'ng2-ckeditor';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +45,8 @@ import { QuillModule } from 'ngx-quill';
     HeaderComponent,
     ModalComponent,
     EditorNgxEditorComponent,
-    EditorNgxQuillComponent
+    EditorNgxQuillComponent,
+    EditorNg2CKEditorComponent
   ],
   imports: [
     ClipboardModule,
@@ -59,7 +63,8 @@ import { QuillModule } from 'ngx-quill';
     NgxEditorModule ,
     TooltipModule.forRoot(),
     RoutingModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    CKEditorModule
   ],
   providers: [ EditorService, NgxSpinnerService, NotificationService, TitleService ],
   bootstrap: [AppComponent],
