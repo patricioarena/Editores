@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditorNg2CKEditorComponent } from './editor-ng2-ckeditor.component';
+import { EditorCKEditorComponent } from './editor-ckeditor4.component';
 
 describe('EditorNgxEditorComponent', () => {
-  let component: EditorNg2CKEditorComponent;
-  let fixture: ComponentFixture<EditorNg2CKEditorComponent>;
+  let component: EditorCKEditorComponent;
+  let fixture: ComponentFixture<EditorCKEditorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditorNg2CKEditorComponent ]
+      declarations: [ EditorCKEditorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditorNg2CKEditorComponent);
+    fixture = TestBed.createComponent(EditorCKEditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

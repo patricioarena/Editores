@@ -31,9 +31,9 @@ import { ClipboardModule } from 'ngx-clipboard';
 import { ModalComponent } from './modal/modal.component';
 import { EditorNgxEditorComponent } from './editor-ngx-editor/editor-ngx-editor.component';
 import { EditorNgxQuillComponent } from './editor-ngx-quill/editor-ngx-quill.component';
-import { EditorNg2CKEditorComponent } from './editor-ng2-ckeditor/editor-ng2-ckeditor.component';
+import { EditorCKEditorComponent } from './editor-ckeditor4/editor-ckeditor4.component';
 import { QuillModule } from 'ngx-quill';
-import { CKEditorModule } from 'ng2-ckeditor';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 
 @NgModule({
@@ -46,7 +46,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
     ModalComponent,
     EditorNgxEditorComponent,
     EditorNgxQuillComponent,
-    EditorNg2CKEditorComponent
+    EditorCKEditorComponent
   ],
   imports: [
     ClipboardModule,
