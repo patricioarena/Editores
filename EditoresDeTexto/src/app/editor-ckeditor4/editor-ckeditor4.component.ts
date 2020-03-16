@@ -13,26 +13,7 @@ import { CKEditorComponent } from 'ckeditor4-angular';
 })
 export class EditorCKEditorComponent implements OnInit {
   // Editor
-  ckeditorContent: string = '<b>TEST</b>';
-  @ViewChild(CKEditorComponent, {static: false}) ckEditor: CKEditorComponent;
-
-  ngAfterViewChecked(): void {
-
-    //https://ckeditor.com/docs/ckeditor4/latest/features/toolbar.html
-
-    // let editor = this.ckEditor.instance;
-    // editor.config.height = '400';
-    // editor.config.toolbarGroups = [
-    //   { name: 'document', groups: ['mode', 'document', 'doctools'] },
-    //   { name: 'clipboard', groups: ['clipboard', 'undo'] },
-    //   { name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
-    //   { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
-    //   { name: 'insert', groups: ['insert'] }
-    // ]
-
-    // editor.config.removeBottons = 'Source,Save,Templates,Find,Replace,Scayt,SelectAll,Form,Radio';
-  }
-
+  //https://ckeditor.com/docs/ckeditor4/latest/features/toolbar.html
   // Editor
 
   title: String;
@@ -66,8 +47,8 @@ export class EditorCKEditorComponent implements OnInit {
     this.escritoTexto = new EscritoTexto;
     this.escritoTexto.Titulo = this.escritoTexto_Titulo;
 
-    // this.escritoTexto.Texto = this.escritoTexto_Texto;
-    this.escritoTexto.Texto = this.ckeditorContent;
+    this.escritoTexto.Texto = this.escritoTexto_Texto;
+
 
     // this.objeto.Extension = '.xml';
     this.editorService.nuevoEscritoTexto(this.escritoTexto).subscribe(
