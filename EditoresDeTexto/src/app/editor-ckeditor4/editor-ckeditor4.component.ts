@@ -7,9 +7,9 @@ import { TitleService } from '../service/title.service';
 import { CKEditorComponent } from 'ckeditor4-angular';
 
 @Component({
-  selector: 'app-editor-ng2-ckeditor',
-  templateUrl: './editor-ng2-ckeditor.component.html',
-  styleUrls: ['./editor-ng2-ckeditor.component.scss']
+  selector: 'app-editor-ckeditor4',
+  templateUrl: './editor-ckeditor4.component.html',
+  styleUrls: ['./editor-ckeditor4.component.scss']
 })
 export class EditorCKEditorComponent implements OnInit {
   // Editor
