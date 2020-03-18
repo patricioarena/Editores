@@ -14,6 +14,9 @@ import { CKEditorComponent } from 'ckeditor4-angular';
 export class EditorCKEditorComponent implements OnInit {
   // Editor
   //https://ckeditor.com/docs/ckeditor4/latest/features/toolbar.html
+  //https://ckeditor.com/latest/samples/toolbarconfigurator/index.html#advanced
+  //https://github.com/ckeditor/ckeditor4-angular/issues/33
+  //https://ckeditor.com/docs/ckeditor4/latest/features/styles.html#widget-styles
   // Editor
 
   title: String;
