@@ -29,7 +29,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ClipboardModule } from 'ngx-clipboard';
 import { ModalComponent } from './modal/modal.component';
-import { EditorNgxEditorComponent } from './editor-ngx-editor/editor-ngx-editor.component';
 import { EditorNgxQuillComponent } from './editor-ngx-quill/editor-ngx-quill.component';
 import { EditorCKEditorComponent } from './editor-ckeditor4/editor-ckeditor4.component';
 import { QuillModule } from 'ngx-quill';
@@ -44,7 +43,6 @@ import { CKEditorModule } from 'ckeditor4-angular';
     FooterComponent,
     HeaderComponent,
     ModalComponent,
-    EditorNgxEditorComponent,
     EditorNgxQuillComponent,
     EditorCKEditorComponent
   ],
