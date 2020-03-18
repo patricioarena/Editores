@@ -3,16 +3,10 @@
 </ngx-spinner>
 
 <section class="ss-style-triangles">
-  <!-- <div>
-    <button type="button" class="btn btn-success" (click)="Sin_editor()" [disabled]="isEnabled">
-      Sin editor de texto&nbsp;<i class="fa fa-ban fa-lg" aria-hidden="true"></i></button>
-  </div> -->
-
   <div>
     <button type="button" class="btn btn-success" routerLink="/home" [disabled]="isEnabled">
       home&nbsp;<i class="fa fa-home fa-lg" aria-hidden="true"></i></button>
   </div>
-
 </section>
 
 <div class="container" *ngIf="true">
@@ -23,8 +17,8 @@
 
 
   <div class="ngx-editor-container">
-    <!-- <ckeditor [(ngModel)]="escritoTexto_Titulo" [config]="{ toolbar: [ [ 'Bold' ] ] }"></ckeditor> -->
-    <ckeditor [(ngModel)]="escritoTexto_Titulo"
+    <ckeditor [(ngModel)]="escritoTexto_Texto"></ckeditor>
+    <!-- <ckeditor [(ngModel)]="escritoTexto_Texto"
     [config]="
     {toolbar: [
       { name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
@@ -37,14 +31,13 @@
       { name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },
       { name: 'colors', items: [ 'TextColor', 'BGColor' ] }
     ]}">
-    </ckeditor>
+    </ckeditor> -->
   </div>
-
 </div>
 
 <br>
 
-{{ ckeditorContent }}
+{{ escritoTexto_Texto }}
 <div class="container">
   <div class="text-center">
     <button type="button" class="btn btn-primary waves-effect waves-light" (click)='Guardar()'><i
