@@ -18,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { NgxEditorModule } from 'ngx-editor';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -58,7 +58,6 @@ import { CKEditorModule } from 'ckeditor4-angular';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     NgxSpinnerModule,
-    NgxEditorModule ,
     TooltipModule.forRoot(),
     RoutingModule,
     QuillModule.forRoot(),

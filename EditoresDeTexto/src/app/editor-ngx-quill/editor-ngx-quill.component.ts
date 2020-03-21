@@ -13,7 +13,7 @@ import { TitleService } from '../service/title.service';
 export class EditorNgxQuillComponent implements OnInit {
   // Editor
   editorStyle = {
-    height: '30rem',
+    height: '35rem',
   };
 
   config = {
@@ -39,7 +39,6 @@ export class EditorNgxQuillComponent implements OnInit {
       ['link', 'image', 'video']                         // link and image, video
     ]
   };
-
   // Editor
   title: String;
   escritoTexto_Titulo: String;
@@ -89,4 +88,10 @@ export class EditorNgxQuillComponent implements OnInit {
         // this.notificationService.showError('Error', message);
       });
   }
+
+  preview() {
+    this.showPreview = this.showPreview ? false : true ;
+    this.textPreview = this.escritoTexto_Texto;
+  }
+  
 }

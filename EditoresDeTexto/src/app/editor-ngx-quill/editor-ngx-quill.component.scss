@@ -10,7 +10,10 @@
 }
 
 body {
+  background-color: #3a5d81;
   font-family: 'Roboto', sans-serif;
+  position: relative;
+  height: 100%;
 }
 
 .null {
@@ -36,6 +39,7 @@ body {
   white-space: normal;
   word-wrap: break-word;
   color: #fff;
+  width: 15rem;
 }
 
 .btn:focus, .btn:hover {
@@ -62,7 +66,6 @@ body {
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
-
 
 .btn-primary:hover {
   color: #fff;
@@ -114,45 +117,28 @@ body {
 .btn-grey {
   background-color: #8dacc5!important;
   color: #fff;
-  width:auto;
-  height:auto;
-  padding:5px 5px;
-  text-align:center;
+  width: auto;
+  height: auto;
+  padding: 5px 5px;
+  text-align: center;
 }
 
-.copy {
-  position: relative;;
-  float: right;
-  top: 3.2em;
-}
+/*------------------------------------------------------------------------------------*/
 
-.download{
-  position: relative;;
-  float: right;
-  top: 3.2em;
-}
-
-.textPreview{
-  font-size: 12px;
-  font-family: monospace;
-  white-space: pre;
-}
-
-
-section {
+nav {
   position: relative;
   background-color: rgba(155, 168, 174, 0.3);
-  padding-top:20px;
-  padding-bottom:20px;
-  margin-top:15px;
-  margin-bottom:80px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 80px;
   text-align: center;
   height: 96px;
 }
 
 /* Common style for pseudo-elements */
-section::before,
-section::after {
+nav::before,
+nav::after {
   position: absolute;
   content: '';
   pointer-events: none;
@@ -173,8 +159,43 @@ section::after {
   background: #ecf0f5;
 }
 
+/*------------------------------------------------------------------------------------*/
 
+.textPreview{
+  font-size: 12px;
+  font-family: monospace;
+  resize: none;
+  width: 49.5rem;
+  height: 700px;
+  padding: 5px;
+}
+
+section {
+  // background-color: #fb3;
+  padding: 5px;
+}
+
+aside {
+  // background-color: #a6c;
+  position: relative;
+  float: left;
+  width: auto;
+  height: 710px;
+  top: 0px;
+  bottom: 0px;
+  padding: 5px;
+}
+
+article {
+  // background-color: #2bbbad;
+  position: relative;
+  float: right;
+  width: 50rem;
+  height: 710px;
+  padding: 5px;
+}
 
 .ngx-editor-container{
   background-color: white;
 }
+
