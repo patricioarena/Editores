@@ -34,6 +34,7 @@ import { EditorCKEditorComponent } from './editor-ckeditor4/editor-ckeditor4.com
 import { QuillModule } from 'ngx-quill';
 import { CKEditorModule } from 'ckeditor4-angular';
 
+import { HighlightJsModule } from 'ngx-highlight-js';
 
 @NgModule({
   declarations: [
@@ -61,9 +62,9 @@ import { CKEditorModule } from 'ckeditor4-angular';
     TooltipModule.forRoot(),
     RoutingModule,
     QuillModule.forRoot(),
-    CKEditorModule
+    CKEditorModule,
+    HighlightJsModule
   ],
-  providers: [ EditorService, NgxSpinnerService, NotificationService, TitleService ],
   bootstrap: [AppComponent],
   entryComponents: [ ModalComponent ]
 })

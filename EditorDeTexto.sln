@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiBackend", "ApiBackend\ApiBackend.csproj", "{6E5FBB35-9DA0-4004-BF39-CFE9042C6E38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{7146D531-E560-449A-8738-397C75581FA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{7146D531-E560-449A-8738-397C75581FA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFronted", "ApiFronted\ApiFronted.csproj", "{EBB409BF-278E-46AA-80BF-05F8F2E6679D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{7146D531-E560-449A-8738-397C75581FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7146D531-E560-449A-8738-397C75581FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7146D531-E560-449A-8738-397C75581FA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBB409BF-278E-46AA-80BF-05F8F2E6679D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBB409BF-278E-46AA-80BF-05F8F2E6679D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBB409BF-278E-46AA-80BF-05F8F2E6679D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBB409BF-278E-46AA-80BF-05F8F2E6679D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

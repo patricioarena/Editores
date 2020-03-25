@@ -4,8 +4,7 @@
 
 <nav class="ss-style-triangles">
   <div>
-    <button type="button" class="btn btn-success" routerLink="/home" [disabled]="isEnabled">
-      home&nbsp;<i class="fa fa-home fa-lg" aria-hidden="true"></i></button>
+    <button type="button" class="btn btn-success" routerLink="/home" [disabled]="isEnabled">Home</button>
   </div>
 </nav>
 
@@ -22,17 +21,26 @@
       </article>
 
       <article *ngIf="showPreview">
-        <textarea class="form-control textPreview" [(ngModel)]="textPreview" readonly></textarea>
+        <textarea highlight-js [lang]="'html'" [ngModel]="textPreview"></textarea>
       </article>
 
     </div>
     <div class="col-5 col-lg-4">
       <aside>
         <button type="button" class="btn btn-primary waves-effect waves-light" (click)='Guardar()'><i
-            class="fa fa-pencil fa-fw" aria-hidden="true"></i>&nbsp;Guardar escrito</button>
-        <br>
-        <button type="button" class="btn btn-danger waves-effect waves-light" (click)='preview()'
-          [disabled]="isEnabled"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;Vista HTML</button>
+            class="fa fa-floppy-o fa-fw" aria-hidden="true"></i>&nbsp;Guardar escrito</button>
+            <br>
+        <button type="button" class="btn btn-info waves-effect waves-light" (click)='preview()' [disabled]="isEnabled"><i
+            class="fa fa-code fa-fw" aria-hidden="true" ></i>&nbsp;Vista HTML</button>
+            <br>
+        <div *ngIf="!showExample">
+          <button type="button" class="btn btn-default waves-effect waves-light" (click)='loadExample()' [disabled]="isEnabled"><i
+            class="fa fa-pencil fa-fw" aria-hidden="true" ></i>&nbsp;Cargar ejemplo</button>
+        </div>
+        <div *ngIf="showExample">
+          <button type="button" class="btn btn-default waves-effect waves-light" (click)='unLoadExample()' [disabled]="isEnabled"><i
+            class="fa fa-eraser fa-fw" aria-hidden="true" ></i>&nbsp;Borrar ejemplo</button>
+        </div>
       </aside>
     </div>
   </div>

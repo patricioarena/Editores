@@ -24,7 +24,8 @@ namespace ApiBackend.Controllers
             _Context = context;
             _Logger = logger;
             //_ConnectionString = configuration.GetConnectionString("SQLite");
-            _ConnectionString = configuration.GetConnectionString("SQLServer2");
+            _ConnectionString = configuration.GetConnectionString("SQLServer");
+            //_ConnectionString = configuration.GetConnectionString("SQLServer2");
         }
 
 

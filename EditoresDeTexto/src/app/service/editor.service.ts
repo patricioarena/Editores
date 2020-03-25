@@ -24,7 +24,7 @@ export class EditorService {
   }
 
   nuevoEscritoTexto(escritoTexto): Observable<EscritoTexto> {
-    const url = `${this.apiurl}EscritosTexto/nuevo`;
+    const url = `${this.apiurl}/nuevo`;
     return this.HttpClient
       .post<ResponseApi<EscritoTexto>>(url, escritoTexto)
       .pipe(map(res => res.data));

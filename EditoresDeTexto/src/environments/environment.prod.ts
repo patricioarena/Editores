@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  API_URL: 'http://appsdev.fepba.gov.ar/editor/'
+  BASE_URL : 'http://appsdev.fepba.gov.ar',
+  API_URL: 'http://appsdev.fepba.gov.ar/api'
 };
