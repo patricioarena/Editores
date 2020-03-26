@@ -36,7 +36,7 @@ namespace ApiBackend.Controllers
         {
             try
             {
-                var callerIdentity = User.Identity as WindowsIdentity;
+                //var callerIdentity = User.Identity as WindowsIdentity;
                 List<EscritosTexto> listaEscritosTexto = null;
                 //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
                 //    listaEscritosTexto = _Context.EscritosTexto.ToList();
@@ -56,7 +56,7 @@ namespace ApiBackend.Controllers
         {
             try
             {
-                var callerIdentity = User.Identity as WindowsIdentity;
+                //var callerIdentity = User.Identity as WindowsIdentity;
                 EscritosTexto escritoTexto = null;
                 //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
                 //    escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
@@ -76,10 +76,10 @@ namespace ApiBackend.Controllers
         {
             try
             {
-                var callerIdentity = User.Identity as WindowsIdentity;
+                //var callerIdentity = User.Identity as WindowsIdentity;
                 //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
-                //    _Context.EscritosTexto.Add(escritosTexto);
-                //    _Context.SaveChanges();
+                _Context.EscritosTexto.Add(escritosTexto);
+                _Context.SaveChanges();
                 //});
                 _Logger.LogInformation("Insert Success!!");
                 return Ok(new ResponseApi<EscritosTexto>(HttpStatusCode.OK, "Insert Success!!", null));

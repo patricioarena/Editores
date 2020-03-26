@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Http;
 using System.Reflection;
 using System.IO;
 using Data.Models;
+using Microsoft.AspNetCore.Server.IISIntegration;
 
 namespace ApiBackend
 {
@@ -72,6 +73,12 @@ namespace ApiBackend
                 );
             });
 
+            //services.Configure<IISOptions>(options =>
+            //{
+            //    options.AutomaticAuthentication = true;
+            //});
+            //services.AddAuthentication(IISDefaults.AuthenticationScheme);
+
             _Logger.LogInformation("Added services");
         }
 
@@ -102,7 +109,8 @@ namespace ApiBackend
             app.UseRouting();
             app.UseCors("CorsPolicy");
 
-            app.UseAuthorization();
+            //app.UseAuthentication();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
