@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace ApiFronted.Extensions
+namespace ApiFrontend.Extensions
 {
     public static class Extension
     {

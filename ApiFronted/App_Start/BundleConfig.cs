@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ApiFronted
+namespace ApiFrontend
 {
     public class BundleConfig
     {

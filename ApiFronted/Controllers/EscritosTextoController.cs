@@ -1,4 +1,4 @@
-﻿using ApiFronted.Controllers;
+﻿using ApiFrontend.Controllers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -14,16 +14,12 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using Models;
 
-
-
-
 namespace ApiFrontend.Controllers
 {
 #if DEBUG
-        [EnableCors(origins: "https://localhost:4200", headers: "*", methods: "*")]
-#endif
-    //Escritos
     [RoutePrefix("api")]
+    [EnableCors(origins: "https://localhost:4200", headers: "*", methods: "*")]
+#endif
     public class EscritosTextoController : ApiController
     {
         private readonly HttpHelperRestConections restHelper;
@@ -32,14 +28,14 @@ namespace ApiFrontend.Controllers
             restHelper = new HttpHelperRestConections();
         }
 
-        #if DEBUG
-                [AllowAnonymous]
-        #endif
+#if DEBUG
+        [AllowAnonymous]
+#endif
         [HttpGet]
         [Route("GetAllEscritosTextos")]
         public JObject GetAllEscritosTextos()
         {
-            var uri = "api/GetAllEscritosTextos";
+            var uri = "api/EscritosTexto/GetAllEscritosTextos";
             return restHelper.restCallGet(uri, this);
         }
 
@@ -50,10 +46,9 @@ namespace ApiFrontend.Controllers
         [Route("escritoTexto/{escritoTextoID}")]
         public JObject Get(int escritoTextoID)
         {
-            var uri = "api/escritoTexto/"+ escritoTextoID;
+            var uri = "api/EscritosTexto/escritoTexto/" + escritoTextoID;
             return restHelper.restCallGet(uri, this);
         }
-
 
 #if DEBUG
         [AllowAnonymous]
@@ -62,7 +57,7 @@ namespace ApiFrontend.Controllers
         [Route("nuevo")]
         public JObject postEscritosTexto([FromBody]EscritosTexto aEscritoTexto)
         {
-            var uri = "api/nuevo";
+            var uri = "api/EscritosTexto/nuevo";
             return restHelper.restCallPost(uri, aEscritoTexto, this);
         }
     }

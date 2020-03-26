@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Principal;
 using System.Threading.Tasks;
+using ApiBackend.Results;
 using Data.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,53 +31,63 @@ namespace ApiBackend.Controllers
             //_ConnectionString = configuration.GetConnectionString("SQLServer2");
         }
 
-
         [HttpGet("GetAllEscritosTextos")]
-        public List<EscritosTexto> GetEscritosTextos()
+        public IActionResult GetEscritosTextos()
         {
             try
             {
-                List<EscritosTexto> listaEscritosTexto = _Context.EscritosTexto.ToList();
-                return listaEscritosTexto;
+                var callerIdentity = User.Identity as WindowsIdentity;
+                List<EscritosTexto> listaEscritosTexto = null;
+                //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
+                //    listaEscritosTexto = _Context.EscritosTexto.ToList();
+                //});
+                listaEscritosTexto = _Context.EscritosTexto.ToList();
+                return Ok(new ResponseApi<List<EscritosTexto>>(HttpStatusCode.OK, "ListaEscritosTexto", listaEscritosTexto));
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 _Logger.LogError(ex.Message);
-                throw ex;
+                return new CustomController().CustomErrorStatusCode(ex);
             }
-
         }
 
-
         [HttpGet("escritoTexto/{escritoTextoID}")]
-        public EscritosTexto Get(int escritoTextoID)
+        public IActionResult Get(int escritoTextoID)
         {
             try
             {
-                EscritosTexto escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
-                return escritoTexto;
+                var callerIdentity = User.Identity as WindowsIdentity;
+                EscritosTexto escritoTexto = null;
+                //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
+                //    escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
+                //});
+                escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
+                return Ok(new ResponseApi<EscritosTexto>(HttpStatusCode.OK, "EscritoTexto", escritoTexto));
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 _Logger.LogError(ex.Message);
-                throw ex;
+                return new CustomController().CustomErrorStatusCode(ex);
             }
         }
 
         [HttpPost("nuevo")]
-        public void Post([FromBody]EscritosTexto escritosTexto)
+        public IActionResult Post([FromBody]EscritosTexto escritosTexto)
         {
             try
             {
-                _Context.EscritosTexto.Add(escritosTexto);
-                _Context.SaveChanges();
-
+                var callerIdentity = User.Identity as WindowsIdentity;
+                //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
+                //    _Context.EscritosTexto.Add(escritosTexto);
+                //    _Context.SaveChanges();
+                //});
                 _Logger.LogInformation("Insert Success!!");
+                return Ok(new ResponseApi<EscritosTexto>(HttpStatusCode.OK, "Insert Success!!", null));
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 _Logger.LogError(ex.Message);
-                throw ex;
+                return new CustomController().CustomErrorStatusCode(ex);
             }
         }
     }

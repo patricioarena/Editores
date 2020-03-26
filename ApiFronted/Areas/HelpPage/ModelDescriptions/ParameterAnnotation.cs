@@ -1,6 +1,6 @@
 using System;
 
-namespace ApiFronted.Areas.HelpPage.ModelDescriptions
+namespace ApiFrontend.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterAnnotation
     {

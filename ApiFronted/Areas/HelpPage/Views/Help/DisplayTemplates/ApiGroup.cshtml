@@ -1,13 +1,13 @@
 @using System.Web.Http
 @using System.Web.Http.Controllers
 @using System.Web.Http.Description
-@using ApiFronted.Areas.HelpPage
-@using ApiFronted.Areas.HelpPage.Models
+@using ApiFrontend.Areas.HelpPage
+@using ApiFrontend.Areas.HelpPage.Models
 @model IGrouping<HttpControllerDescriptor, ApiDescription>
 
 @{
-    var controllerDocumentation = ViewBag.DocumentationProvider != null ? 
-        ViewBag.DocumentationProvider.GetDocumentation(Model.Key) : 
+    var controllerDocumentation = ViewBag.DocumentationProvider != null ?
+        ViewBag.DocumentationProvider.GetDocumentation(Model.Key) :
         null;
 }
 

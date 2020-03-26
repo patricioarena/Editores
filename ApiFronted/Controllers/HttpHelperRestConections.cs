@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Http;
 
-namespace ApiFronted.Controllers
+namespace ApiFrontend.Controllers
 {
     public class HttpHelperRestConections
     {

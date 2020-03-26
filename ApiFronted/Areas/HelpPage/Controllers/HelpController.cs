@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using ApiFronted.Areas.HelpPage.ModelDescriptions;
-using ApiFronted.Areas.HelpPage.Models;
+using ApiFrontend.Areas.HelpPage.ModelDescriptions;
+using ApiFrontend.Areas.HelpPage.Models;
 
-namespace ApiFronted.Areas.HelpPage.Controllers
+namespace ApiFrontend.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

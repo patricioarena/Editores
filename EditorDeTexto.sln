@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiBackend", "ApiBackend\Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{7146D531-E560-449A-8738-397C75581FA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFronted", "ApiFronted\ApiFronted.csproj", "{EBB409BF-278E-46AA-80BF-05F8F2E6679D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFrontend", "ApiFronted\ApiFrontend.csproj", "{EBB409BF-278E-46AA-80BF-05F8F2E6679D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

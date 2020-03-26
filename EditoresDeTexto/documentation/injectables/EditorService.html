@@ -441,7 +441,7 @@ export class EditorService {
   }
 
   nuevoEscritoTexto(escritoTexto): Observable&lt;EscritoTexto&gt; {
-    const url &#x3D; &#x60;${this.apiurl}EscritosTexto/nuevo&#x60;;
+    const url &#x3D; &#x60;${this.apiurl}/nuevo&#x60;;
     return this.HttpClient
       .post&lt;ResponseApi&lt;EscritoTexto&gt;&gt;(url, escritoTexto)
       .pipe(map(res &#x3D;&gt; res.data));

@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace ApiFronted.Areas.HelpPage
+namespace ApiFrontend.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

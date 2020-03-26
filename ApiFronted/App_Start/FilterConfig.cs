@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace ApiFronted
+namespace ApiFrontend
 {
     public class FilterConfig
     {

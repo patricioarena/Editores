@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using ApiFronted.Areas.HelpPage.ModelDescriptions;
-using ApiFronted.Areas.HelpPage.Models;
+using ApiFrontend.Areas.HelpPage.ModelDescriptions;
+using ApiFrontend.Areas.HelpPage.Models;
 
-namespace ApiFronted.Areas.HelpPage
+namespace ApiFrontend.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {
@@ -282,7 +282,7 @@ namespace ApiFronted.Areas.HelpPage
                     //     public int Y { get; set; }
                     // }
                     // Class Point is bindable with a TypeConverter, so Point will be added to UriParameters collection.
-                    // 
+                    //
                     // public class Point
                     // {
                     //     public int X { get; set; }

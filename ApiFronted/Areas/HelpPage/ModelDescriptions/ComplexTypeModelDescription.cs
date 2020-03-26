@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace ApiFronted.Areas.HelpPage.ModelDescriptions
+namespace ApiFrontend.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

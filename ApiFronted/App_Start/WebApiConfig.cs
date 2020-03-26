@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
-namespace ApiFronted
+namespace ApiFrontend
 {
     public static class WebApiConfig
     {
@@ -17,14 +17,13 @@ namespace ApiFronted
             config.Routes.IgnoreRoute("help", "help"); // Make help page, which is now unavailable on release builds, throw a 404 instead of a 500.
 #endif
             config.MapHttpAttributeRoutes();
-            var cors = new EnableCorsAttribute("http://localhost:4200", "*", "*");
+            var cors = new EnableCorsAttribute("https://localhost:4200", "*", "*");
             config.EnableCors(cors);
-
-            //config.Routes.MapHttpRoute(
-            //    name: "DefaultApi",
-            //    routeTemplate: "api/{controller}/{id}",
-            //    defaults: new { id = RouteParameter.Optional }
-            //);
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
         }
     }
 }

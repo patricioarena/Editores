@@ -16,7 +16,7 @@ using System.Web.Http;
 using System.Web.Http.OData;
 #endif
 
-namespace ApiFronted.Areas.HelpPage
+namespace ApiFrontend.Areas.HelpPage
 {
     /// <summary>
     /// Use this class to customize the Help Page.
@@ -26,7 +26,7 @@ namespace ApiFronted.Areas.HelpPage
     public static class HelpPageConfig
     {
         [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters",
-            MessageId = "ApiFronted.Areas.HelpPage.TextSample.#ctor(System.String)",
+            MessageId = "ApiFrontend.Areas.HelpPage.TextSample.#ctor(System.String)",
             Justification = "End users may choose to merge this string with existing localized resources.")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly",
             MessageId = "bsonspec",
@@ -37,7 +37,7 @@ namespace ApiFronted.Areas.HelpPage
             //config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
 
             //// Uncomment the following to use "sample string" as the sample for all actions that have string as the body parameter or return type.
-            //// Also, the string arrays will be used for IEnumerable<string>. The sample objects will be serialized into different media type 
+            //// Also, the string arrays will be used for IEnumerable<string>. The sample objects will be serialized into different media type
             //// formats by the available formatters.
             //config.SetSampleObjects(new Dictionary<Type, object>
             //{
