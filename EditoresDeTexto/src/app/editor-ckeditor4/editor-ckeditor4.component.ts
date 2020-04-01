@@ -129,7 +129,6 @@ export class EditorCKEditorComponent implements OnInit {
   preview() {
     this.showPreview = this.showPreview ? false : true;
     this.textPreview = this.escritoTexto_Texto;
-    console.log(this.escritoTexto_Texto);
   }
 
   loadExample(){
