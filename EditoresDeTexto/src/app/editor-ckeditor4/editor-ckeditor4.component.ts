@@ -13,15 +13,6 @@ import { environment } from '../../environments/environment';
 })
 export class EditorCKEditorComponent implements OnInit {
 
-  // Editor
-  // https://ckeditor.com/docs/ckeditor4/latest/features/toolbar.html
-  // https://ckeditor.com/latest/samples/toolbarconfigurator/index.html#advanced
-  // https://github.com/ckeditor/ckeditor4-angular/issues/33
-  // https://ckeditor.com/docs/ckeditor4/latest/features/styles.html#widget-styles
-  // https://ckeditor.com/cke4/addons/skins/all
-  // https://openbase.io/js/ngx-highlight-js
-  // Editor
-
   title: String;
   escritoTexto_Titulo: String;
   escritoTexto_Texto: String;
