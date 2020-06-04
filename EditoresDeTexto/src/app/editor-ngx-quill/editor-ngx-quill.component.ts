@@ -53,6 +53,7 @@ export class EditorNgxQuillComponent implements OnInit {
   response;
   baseUrl = environment.BASE_URL;
 
+  // tslint:disable:max-line-length
   example = `<h1 class="ql-align-center">Editor de texto</h1><p><br></p><p>Un&nbsp;<strong>editor de texto&nbsp;
   </strong>es un&nbsp;<a href="https://es.wikipedia.org/wiki/Programa_inform%C3%A1tico" rel="noopener noreferrer"
   target="_blank" style="color: rgb(11, 0, 128);">programa informático</a>&nbsp;que permite crear y modificar&nbsp;
