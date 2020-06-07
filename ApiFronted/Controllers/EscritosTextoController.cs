@@ -18,7 +18,6 @@ namespace ApiFrontend.Controllers
 {
 #if DEBUG
     [RoutePrefix("api")]
-    [EnableCors(origins: "https://localhost:4200", headers: "*", methods: "*")]
 #endif
     public class EscritosTextoController : ApiController
     {

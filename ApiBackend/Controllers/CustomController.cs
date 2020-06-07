@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using ApiBackend.Results;
-using Microsoft.AspNetCore.Http;
+﻿using ApiBackend.Results;
+using Application;
+using Application.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Net;
 
 namespace ApiBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomController : ControllerBase
+    public class CustomController : Controller
     {
-        public CustomController()
+        public readonly IServiceEscritosTexto _ServiceEscritosTexto;
+
+        public CustomController(IServiceEscritosTexto ServiceEscritosTexto)
         {
+            _ServiceEscritosTexto = ServiceEscritosTexto;
         }
 
         [ApiExplorerSettings(IgnoreApi = true)]

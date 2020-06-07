@@ -5,7 +5,10 @@ using System.Net;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using ApiBackend.Results;
-using Data.Models;
+using Application;
+using Application.Services;
+using DataAccess;
+using Dominio.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -15,20 +18,13 @@ namespace ApiBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EscritosTextoController : ControllerBase
+    public class EscritosTextoController : CustomController
     {
-        private readonly POCContext _Context;
-        private readonly IConfiguration _Configuration;
-        private readonly string _ConnectionString;
+
         private readonly ILogger<EscritosTextoController> _Logger;
-        public EscritosTextoController(POCContext context, ILogger<EscritosTextoController> logger, IConfiguration configuration)
+        public EscritosTextoController(IServiceEscritosTexto service, ILogger<EscritosTextoController> logger) : base(service)
         {
-            _Configuration = configuration;
-            _Context = context;
             _Logger = logger;
-            //_ConnectionString = configuration.GetConnectionString("SQLite");
-            _ConnectionString = configuration.GetConnectionString("SQLServer");
-            //_ConnectionString = configuration.GetConnectionString("SQLServer2");
         }
 
         [HttpGet("GetAllEscritosTextos")]
@@ -41,13 +37,14 @@ namespace ApiBackend.Controllers
                 //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
                 //    listaEscritosTexto = _Context.EscritosTexto.ToList();
                 //});
-                listaEscritosTexto = _Context.EscritosTexto.ToList();
+                //listaEscritosTexto = _Context.CreateReal().EscritosTexto.ToList();
+                listaEscritosTexto = _ServiceEscritosTexto.GetEscritosTextos();
                 return Ok(new ResponseApi<List<EscritosTexto>>(HttpStatusCode.OK, "ListaEscritosTexto", listaEscritosTexto));
             }
             catch (System.Exception ex)
             {
                 _Logger.LogError(ex.Message);
-                return new CustomController().CustomErrorStatusCode(ex);
+                return CustomErrorStatusCode(ex);
             }
         }
 
@@ -61,13 +58,13 @@ namespace ApiBackend.Controllers
                 //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
                 //    escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
                 //});
-                escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
+                escritoTexto = _ServiceEscritosTexto.GetEscritosTextoById(escritoTextoID);
                 return Ok(new ResponseApi<EscritosTexto>(HttpStatusCode.OK, "EscritoTexto", escritoTexto));
             }
             catch (System.Exception ex)
             {
                 _Logger.LogError(ex.Message);
-                return new CustomController().CustomErrorStatusCode(ex);
+                return CustomErrorStatusCode(ex);
             }
         }
 
@@ -78,8 +75,7 @@ namespace ApiBackend.Controllers
             {
                 //var callerIdentity = User.Identity as WindowsIdentity;
                 //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
-                _Context.EscritosTexto.Add(escritosTexto);
-                _Context.SaveChanges();
+                _ServiceEscritosTexto.SetEscritoTexto(escritosTexto);
                 //});
                 _Logger.LogInformation("Insert Success!!");
                 return Ok(new ResponseApi<EscritosTexto>(HttpStatusCode.OK, "Insert Success!!", null));
@@ -87,7 +83,7 @@ namespace ApiBackend.Controllers
             catch (System.Exception ex)
             {
                 _Logger.LogError(ex.Message);
-                return new CustomController().CustomErrorStatusCode(ex);
+                return CustomErrorStatusCode(ex);
             }
         }
     }

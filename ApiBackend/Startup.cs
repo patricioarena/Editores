@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Application;
+using Application.Services;
+using DataAccess;
+using Dominio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using ApiBackend;
-using Microsoft.AspNetCore.Http;
-using System.Reflection;
+using System;
 using System.IO;
-using Data.Models;
-using Microsoft.AspNetCore.Server.IISIntegration;
+using System.Reflection;
 
 namespace ApiBackend
 {
@@ -43,10 +40,9 @@ namespace ApiBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<POCContext>(options =>
-            //options.UseSqlite(Configuration.GetConnectionString("SQLite")));
-            options.UseSqlServer(Configuration.GetConnectionString("SQLServer")));
-            //options.UseSqlServer(Configuration.GetConnectionString("SQLServer2")));
+            services.AddScoped<IServiceEscritosTexto, ServiceEscritosTexto>();
+            services.AddScoped<IAbstractFactory, ConcreteFactory>();
+
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IConfiguration>(Configuration);
@@ -119,7 +115,7 @@ namespace ApiBackend
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            
+
         }
     }
 }
