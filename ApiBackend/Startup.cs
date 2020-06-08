@@ -7,12 +7,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.CommandLine;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace ApiBackend
@@ -24,15 +27,19 @@ namespace ApiBackend
 
         private readonly ILogger _Logger;
         public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration, ILogger<Startup> logger, IHostEnvironment env)
         {
             Configuration = configuration;
             _Logger = logger;
 
+            configuration["Context"] = Enum.GetName(typeof(Context), Context.POCDbContext); //<= Aca se cambia el contexto de la aplicacion
+
             var builder = new ConfigurationBuilder()
             .SetBasePath(env.ContentRootPath)
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
             .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+            .AddConfiguration(configuration)
             .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -42,7 +49,6 @@ namespace ApiBackend
         {
             services.AddScoped<IServiceEscritosTexto, ServiceEscritosTexto>();
             services.AddScoped<IAbstractFactory, ConcreteFactory>();
-
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IConfiguration>(Configuration);

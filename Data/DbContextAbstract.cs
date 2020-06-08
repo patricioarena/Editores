@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace DataAccess
 {
-    //En esta clase es la que se deben usan para agreagar store procedure
+    //Esta clase se debe usar para agreagar store procedure
     public abstract class DbContextAbstract : DbContext
     {
         protected DbContextAbstract() { }
