@@ -14,7 +14,7 @@ namespace Application.Services
 
         public ServiceEscritosTexto(IAbstractFactory factory)
         {
-            _Context = factory.Create(Context.InMemoryDbContex);
+            _Context = factory.Create();
         }
 
         public List<EscritosTexto> GetEscritosTextos()

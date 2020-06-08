@@ -7,6 +7,6 @@ namespace Application.Services
     {
         POCDbContext CreatePOCDbContext();
         InMermoryDbContext CreateInMemoryDbContext();
-        DbContext Create(Context type);
+        DbContext Create();
     }
 }

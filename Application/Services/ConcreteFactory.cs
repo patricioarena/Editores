@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Application.Services
@@ -16,9 +17,12 @@ namespace Application.Services
     public class ConcreteFactory : IAbstractFactory
     {
         public IConfiguration _Configuration;
+
+        private Context _Type;
         public ConcreteFactory(IConfiguration configuration)
         {
             _Configuration = configuration;
+            _Type = (Context)Enum.Parse(typeof(Context), configuration["Context"]); ;
         }
 
         public POCDbContext CreatePOCDbContext()
@@ -39,9 +43,9 @@ namespace Application.Services
             return context;
         }
 
-        public DbContext Create(Context type)
+        public DbContext Create()
         {
-            switch (type)
+            switch (_Type)
             {
                 case Context.InMemoryDbContex:
                     {
