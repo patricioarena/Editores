@@ -22,7 +22,7 @@ namespace ApiBackend
             .ConfigureLogging((hostingContext, logging) =>
             {
                 logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
-                logging.AddConsole();
+                logging.AddConsole(options => options.IncludeScopes = true);
                 logging.AddDebug();
                 logging.AddEventSourceLogger();
             }).UseStartup<Startup>();

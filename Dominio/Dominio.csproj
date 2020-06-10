@@ -2,10 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Configurations>Debug;Release;UAT;Production;Testing</Configurations>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="DTOs\" />
-  </ItemGroup>
 
 </Project>

@@ -3,11 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <Configurations>Debug;Release;UAT;Production;Testing</Configurations>
+    <UserSecretsId>1fbae994-aa98-4e4f-8888-18063b3500de</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netcoreapp3.1\ApiBackend.xml</DocumentationFile>
     <OutputPath>bin\Debug\netcoreapp3.1</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netcoreapp3.1\ApiBackend.xml</DocumentationFile>
+    <OutputPath>bin\Release\netcoreapp3.1</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,5 +1,9 @@
 ﻿using Application;
+using Application.Factory;
+using Application.IFactory;
+using Application.IServices;
 using Application.Services;
+using AutoMapper;
 using DataAccess;
 using Dominio;
 using Microsoft.AspNetCore.Builder;
@@ -25,6 +29,8 @@ namespace ApiBackend
         private static OpenApiContact contact = new OpenApiContact { Email = "patricio.e.arena@gmail.com", Name = "Patricio Ernesto Antonio Arena" };
         private static OpenApiInfo Info = new OpenApiInfo { Title = "Editor de texto", Version = "v1", Contact = contact };
 
+        private static Context context = Context.InMemoryDbContex; //<= Aca se cambia el contexto de la aplicacion
+
         private readonly ILogger _Logger;
         public IConfiguration Configuration { get; }
 
@@ -33,7 +39,7 @@ namespace ApiBackend
             Configuration = configuration;
             _Logger = logger;
 
-            configuration["Context"] = Enum.GetName(typeof(Context), Context.POCDbContext); //<= Aca se cambia el contexto de la aplicacion
+            configuration["Context"] = Enum.GetName(typeof(Context), context); 
 
             var builder = new ConfigurationBuilder()
             .SetBasePath(env.ContentRootPath)
@@ -48,13 +54,27 @@ namespace ApiBackend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IServiceEscritosTexto, ServiceEscritosTexto>();
-            services.AddScoped<IAbstractFactory, ConcreteFactory>();
+            services.AddScoped<IAbstractContextFactory, ConcreteContextFactory>();
+            services.AddScoped<IAbstractServiceFactory, ConcreteServiceFactory>();
+
+            var serviceProvider = services.BuildServiceProvider();
+            var logger = serviceProvider.GetService<ILogger<Startup>>();
+            services.AddSingleton(typeof(ILogger), logger);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddMvc().AddNewtonsoftJson(
                 options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
+
+            MapperConfiguration mc = new MapperConfiguration(e =>
+            {
+               e.AddProfile(new AutoMapperProfileConfiguration());
+            });
+
+            IMapper mapper = mc.CreateMapper();
+
+            services.AddSingleton(mapper);
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
             services.AddSwaggerGen(c =>
@@ -81,29 +101,27 @@ namespace ApiBackend
             //});
             //services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
-            _Logger.LogInformation("Added services");
+            _Logger.LogInformation("Added services in Startup");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+#if DEBUG
+            app.UseDeveloperExceptionPage();
+            _Logger.LogInformation("In Development environment");
+#endif
+
             app.UseSwagger();
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                _Logger.LogInformation("In Development environment");
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+
+            app.UseHsts();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint($"/swagger/{Info.Version}/swagger.json", $"{Info.Title} {Info.Version}");
+                c.SwaggerEndpoint($"/swagger/{Info.Version}/swagger.json", $"{Info.Title} {Info.Version} - {env.EnvironmentName}");
                 c.RoutePrefix = string.Empty;
             });
 

@@ -6,8 +6,10 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using ApiBackend.Results;
 using Application;
+using Application.IServices;
 using Application.Services;
 using DataAccess;
+using Dominio.DTOs;
 using Dominio.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -69,7 +71,7 @@ namespace ApiBackend.Controllers
         }
 
         [HttpPost("nuevo")]
-        public IActionResult Post([FromBody]EscritosTexto escritosTexto)
+        public IActionResult Post([FromBody]EscritosTextoDto escritosTexto)
         {
             try
             {
