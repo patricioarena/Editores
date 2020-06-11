@@ -10,6 +10,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netcoreapp3.1\ApiBackend.xml</DocumentationFile>
     <OutputPath>bin\Debug\netcoreapp3.1</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1701;1702;1591;</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
