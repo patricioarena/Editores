@@ -1,7 +1,6 @@
 ﻿using Application.IFactory;
 using Application.IServices;
 using AutoMapper;
-using DataAccess;
 using Dominio.DTOs;
 using Dominio.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +39,7 @@ namespace Application.Services
         public EscritosTexto GetUltimoEscritosTexto()
         {
             string conn = _Context.Database.GetDbConnection().ConnectionString;
-            return new Factory.DbManager(conn).ExecuteSingle<EscritosTexto>("dbo.GetUltimoEscritoTexto", null);
+            return new DataAccess.DbManager(conn).ExecuteSingle<EscritosTexto>("dbo.GetUltimoEscritoTexto", null);
         }
 
         public void SetEscritoTexto(EscritosTextoDto escritosTexto)

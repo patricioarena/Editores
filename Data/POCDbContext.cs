@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
-    public partial class POCDbContext : DbContextAbstract
+    public partial class POCDbContext : AbstractDbContext
     {
         public POCDbContext() : base() { }
         public POCDbContext(DbContextOptions<DbContext> options) : base(options) { }
