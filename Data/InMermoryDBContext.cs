@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace DataAccess
 {
-    public partial class InMermoryDbContext : DbContextAbstract
+    public partial class InMermoryDbContext : AbstractDbContext
     {
         public InMermoryDbContext() : base() { }
         public InMermoryDbContext(DbContextOptions<DbContext> options) : base(options) { }
