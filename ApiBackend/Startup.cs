@@ -26,8 +26,6 @@ namespace ApiBackend
 {
     public class Startup
     {
-        private static OpenApiContact contact = new OpenApiContact { Email = "patricio.e.arena@gmail.com", Name = "Patricio Ernesto Antonio Arena" };
-        private static OpenApiInfo Info = new OpenApiInfo { Title = "Editor de texto", Version = "v1", Contact = contact };
 
         private static Context context = Context.POCDbContext; //<= Aca se cambia el contexto de la aplicacion
 
@@ -53,6 +51,7 @@ namespace ApiBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddScoped<IServiceEscritosTexto, ServiceEscritosTexto>();
             services.AddScoped<IAbstractContextFactory, ConcreteContextFactory>();
             services.AddScoped<IAbstractServiceFactory, ConcreteServiceFactory>();
@@ -79,6 +78,20 @@ namespace ApiBackend
             services.AddSingleton(mapper);
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                );
+            });
+
+            OpenApiContact contact = new OpenApiContact { Email = "patricio.e.arena@gmail.com", Name = "Patricio Ernesto Antonio Arena" };
+            OpenApiInfo Info = new OpenApiInfo { Title = Configuration.GetSection("SwaggerOptions:Description").Value, Version = Configuration.GetSection("SwaggerOptions:Version").Value, Contact = contact };
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(Info.Version, Info);
@@ -87,15 +100,6 @@ namespace ApiBackend
                 c.IncludeXmlComments(xmlPath);
             });
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                );
-            });
 
             //services.Configure<IISOptions>(options =>
             //{
@@ -114,25 +118,24 @@ namespace ApiBackend
             _Logger.LogInformation("In Development environment");
 #endif
 
-            app.UseSwagger();
 
             app.UseHsts();
-
+            app.UseSwagger();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseSwaggerUI(c =>
+            app.UseSwaggerUI(option =>
             {
-                c.SwaggerEndpoint($"/swagger/{Info.Version}/swagger.json", $"{Info.Title} {Info.Version} - {env.EnvironmentName}");
-                c.RoutePrefix = string.Empty;
+                option.SwaggerEndpoint(Configuration.GetSection("SwaggerOptions:UIEndpoint").Value, $"{ env.EnvironmentName} - {Configuration.GetSection("SwaggerOptions:Version").Value}");
+                option.RoutePrefix = string.Empty;
             });
 
 
             app.UseRouting();
-            app.UseCors("CorsPolicy");
+            app.UseCors("AllowAll");
 
             //app.UseAuthentication();
-            //app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

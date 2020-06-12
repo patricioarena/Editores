@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFrontend_Old", "ApiFronted_Old\ApiFrontend_Old.csproj", "{EBB409BF-278E-46AA-80BF-05F8F2E6679D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAngular", "ApiFronted\ApiAngular.csproj", "{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,6 +74,16 @@ Global
 		{EBB409BF-278E-46AA-80BF-05F8F2E6679D}.Testing|Any CPU.Build.0 = Release|Any CPU
 		{EBB409BF-278E-46AA-80BF-05F8F2E6679D}.UAT|Any CPU.ActiveCfg = Release|Any CPU
 		{EBB409BF-278E-46AA-80BF-05F8F2E6679D}.UAT|Any CPU.Build.0 = Release|Any CPU
+		{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}.Production|Any CPU.ActiveCfg = Testing|Any CPU
+		{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}.Production|Any CPU.Build.0 = Testing|Any CPU
+		{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}.Testing|Any CPU.ActiveCfg = Testing|Any CPU
+		{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}.Testing|Any CPU.Build.0 = Testing|Any CPU
+		{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}.UAT|Any CPU.ActiveCfg = UAT|Any CPU
+		{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}.UAT|Any CPU.Build.0 = UAT|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

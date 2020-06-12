@@ -52,16 +52,25 @@ namespace ApiFrontend_Old.Controllers
 #if DEBUG
         [AllowAnonymous]
 #endif
-        [HttpPost]
-        [Route("nuevo")]
-        public JObject postEscritosTexto([FromBody]EscritosTexto aEscritoTexto)
+        [HttpGet]
+        [Route("GetUltimoEscritosTexto")]
+        public JObject GetUltimoEscritosTexto()
         {
-            var uri = "api/EscritosTexto/nuevo";
+            var uri = "api/EscritosTexto/GetUltimoEscritosTexto";
+            return restHelper.restCallGet(uri, this);
+        }
+
+#if DEBUG
+        [AllowAnonymous]
+#endif
+        [HttpPost]
+        [Route("SetEscritoTexto")]
+        public JObject SetEscritoTexto([FromBody]EscritosTexto aEscritoTexto)
+        {
+            var uri = "api/EscritosTexto/SetEscritoTexto";
             return restHelper.restCallPost(uri, aEscritoTexto, this);
         }
     }
-
-
 }
 
 

@@ -95,7 +95,7 @@ namespace ApiBackend.Controllers
         }
         
         [HttpPost("SetEscritoTexto")]
-        public IActionResult Post([FromBody]EscritosTextoDto escritosTexto)
+        public IActionResult SetEscritoTexto([FromBody]EscritosTextoDto escritosTexto)
         {
             try
             {

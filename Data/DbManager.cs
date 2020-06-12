@@ -40,6 +40,7 @@ namespace DataAccess
             catch (Exception ex)
             {
                 Close();
+                throw ex;
             }
         }
 

@@ -4,7 +4,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <Configurations>Debug;Release;UAT;Production;Testing</Configurations>
-    <UserSecretsId>1fbae994-aa98-4e4f-8888-18063b3500de</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -12,6 +11,7 @@
     <OutputPath>bin\Debug\netcoreapp3.1</OutputPath>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1701;1702;1591;</NoWarn>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
