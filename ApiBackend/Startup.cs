@@ -59,6 +59,7 @@ namespace ApiBackend
 #pragma warning disable ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
             var serviceProvider = services.BuildServiceProvider();
 #pragma warning restore ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+            
             var logger = serviceProvider.GetService<ILogger<Startup>>();
             services.AddSingleton(typeof(ILogger), logger);
 
@@ -118,7 +119,6 @@ namespace ApiBackend
             _Logger.LogInformation("In Development environment");
 #endif
 
-
             app.UseHsts();
             app.UseSwagger();
             app.UseHttpsRedirection();
@@ -135,7 +135,6 @@ namespace ApiBackend
             app.UseCors("AllowAll");
 
             //app.UseAuthentication();
-
 
             app.UseEndpoints(endpoints =>
             {

@@ -45,6 +45,7 @@ namespace ApiAngular
 #pragma warning disable ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
             var serviceProvider = services.BuildServiceProvider();
 #pragma warning restore ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+            
             var logger = serviceProvider.GetService<ILogger<Startup>>();
             services.AddSingleton(typeof(ILogger), logger);
 
@@ -96,6 +97,8 @@ namespace ApiAngular
             app.UseHsts();
             app.UseSwagger();
             app.UseHttpsRedirection();
+            app.UseStaticFiles();
+
             app.UseSwaggerUI(option =>
             {
                 option.SwaggerEndpoint(Configuration.GetSection("SwaggerOptions:UIEndpoint").Value, $"{ env.EnvironmentName} - {Configuration.GetSection("SwaggerOptions:Version").Value}");
