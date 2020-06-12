@@ -29,7 +29,7 @@ namespace ApiBackend
         private static OpenApiContact contact = new OpenApiContact { Email = "patricio.e.arena@gmail.com", Name = "Patricio Ernesto Antonio Arena" };
         private static OpenApiInfo Info = new OpenApiInfo { Title = "Editor de texto", Version = "v1", Contact = contact };
 
-        private static Context context = Context.InMemoryDbContex; //<= Aca se cambia el contexto de la aplicacion
+        private static Context context = Context.POCDbContext; //<= Aca se cambia el contexto de la aplicacion
 
         private readonly ILogger _Logger;
         public IConfiguration Configuration { get; }

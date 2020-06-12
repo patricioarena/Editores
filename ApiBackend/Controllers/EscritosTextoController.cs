@@ -30,7 +30,7 @@ namespace ApiBackend.Controllers
         }
 
         [HttpGet("GetAllEscritosTextos")]
-        public IActionResult GetEscritosTextos()
+        public IActionResult GetAllEscritosTextos()
         {
             try
             {
@@ -40,7 +40,7 @@ namespace ApiBackend.Controllers
                 //    listaEscritosTexto = _Context.EscritosTexto.ToList();
                 //});
                 //listaEscritosTexto = _Context.CreateReal().EscritosTexto.ToList();
-                listaEscritosTexto = _ServiceEscritosTexto.GetEscritosTextos();
+                listaEscritosTexto = _ServiceEscritosTexto.GetAllEscritosTextos();
                 return Ok(new ResponseApi<List<EscritosTexto>>(HttpStatusCode.OK, "ListaEscritosTexto", listaEscritosTexto));
             }
             catch (System.Exception ex)
@@ -50,8 +50,8 @@ namespace ApiBackend.Controllers
             }
         }
 
-        [HttpGet("escritoTexto/{escritoTextoID}")]
-        public IActionResult Get(int escritoTextoID)
+        [HttpGet("GetEscritosTextoById/{escritoTextoID}")]
+        public IActionResult GetEscritosTextoById(int escritoTextoID)
         {
             try
             {
@@ -70,7 +70,31 @@ namespace ApiBackend.Controllers
             }
         }
 
-        [HttpPost("nuevo")]
+        /// <summary>
+        /// Se usa store procedure para probar DbManager
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetUltimoEscritosTexto")]
+        public IActionResult GetUltimoEscritosTexto()
+        {
+            try
+            {
+                //var callerIdentity = User.Identity as WindowsIdentity;
+                EscritosTexto escritoTexto = null;
+                //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
+                //    escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
+                //});
+                escritoTexto = _ServiceEscritosTexto.GetUltimoEscritosTexto();
+                return Ok(new ResponseApi<EscritosTexto>(HttpStatusCode.OK, "EscritoTexto", escritoTexto));
+            }
+            catch (System.Exception ex)
+            {
+                _Logger.LogError(ex.Message);
+                return CustomErrorStatusCode(ex);
+            }
+        }
+        
+        [HttpPost("SetEscritoTexto")]
         public IActionResult Post([FromBody]EscritosTextoDto escritosTexto)
         {
             try

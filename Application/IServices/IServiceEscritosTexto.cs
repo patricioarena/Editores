@@ -7,7 +7,9 @@ namespace Application.IServices
     public interface IServiceEscritosTexto
     {
         EscritosTexto GetEscritosTextoById(int escritoTextoID);
-        List<EscritosTexto> GetEscritosTextos();
+        List<EscritosTexto> GetAllEscritosTextos();
+        EscritosTexto GetUltimoEscritosTexto();
         void SetEscritoTexto(EscritosTextoDto escritosTexto);
+
     }
 }

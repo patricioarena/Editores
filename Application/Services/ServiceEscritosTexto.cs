@@ -26,8 +26,9 @@ namespace Application.Services
             _Service = service;
         }
 
-        public List<EscritosTexto> GetEscritosTextos()
+        public List<EscritosTexto> GetAllEscritosTextos()
         {
+            this.GetUltimoEscritosTexto();
             return _Context.Set<EscritosTexto>().ToList();
         }
 
@@ -36,11 +37,18 @@ namespace Application.Services
             return _Context.Set<EscritosTexto>().Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
         }
 
+        public EscritosTexto GetUltimoEscritosTexto()
+        {
+            string conn = _Context.Database.GetDbConnection().ConnectionString;
+            return new Factory.DbManager(conn).ExecuteSingle<EscritosTexto>("dbo.GetUltimoEscritoTexto", null);
+        }
+
         public void SetEscritoTexto(EscritosTextoDto escritosTexto)
         {
             EscritosTexto EscritosTexto = _Service.Mapper().Map<EscritosTexto>(escritosTexto);
             _Context.Set<EscritosTexto>().Add(EscritosTexto);
             _Context.SaveChanges();
         }
+
     }
 }
