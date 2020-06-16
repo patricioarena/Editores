@@ -16,14 +16,6 @@ namespace DataAccess
 
         private string ConnectionString { get; set; }
 
-        //private static string ConnectionString
-        //{
-        //    get
-        //    {
-        //        return @"server=my.sql.server;user id=youHere;password=yourPassword;database=yourTestDB";
-        //    }
-        //}
-
         private SqlConnection Connection { get; set; }
 
         private SqlCommand Command { get; set; }

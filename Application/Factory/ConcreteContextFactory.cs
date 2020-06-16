@@ -20,6 +20,8 @@ namespace Application.Factory
         public IConfiguration _Configuration;
 
         private Context _Type;
+        private static DbContext _Instance;
+
         public ConcreteContextFactory(IConfiguration configuration)
         {
             _Configuration = configuration;
@@ -50,14 +52,23 @@ namespace Application.Factory
             {
                 case Context.InMemoryDbContex:
                     {
-                        return CreateInMemoryDbContext();
+                        if (_Instance == null)
+                        {
+                            _Instance = CreateInMemoryDbContext();
+                        }
+                        return _Instance;
                     }
                 case Context.POCDbContext:
                     {
-                        return CreatePOCDbContext();
+                        if (_Instance == null)
+                        {
+                            _Instance = CreatePOCDbContext();
+                        }
+                        return _Instance;
                     }
             }
             return null;
         }
+
     }
 }

@@ -27,7 +27,6 @@ namespace Application.Services
 
         public List<EscritosTexto> GetAllEscritosTextos()
         {
-            this.GetUltimoEscritosTexto();
             return _Context.Set<EscritosTexto>().ToList();
         }
 
