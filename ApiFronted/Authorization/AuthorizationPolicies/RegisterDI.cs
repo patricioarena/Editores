@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiAngular.Authorization.AuthorizationPolicies
+namespace ApiFronted.Authorization.AuthorizationPolicies
 {
     public static class RegisterDI
     {

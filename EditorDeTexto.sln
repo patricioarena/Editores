@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFrontend_Old", "ApiFronted_Old\ApiFrontend_Old.csproj", "{EBB409BF-278E-46AA-80BF-05F8F2E6679D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiAngular", "ApiFronted\ApiAngular.csproj", "{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiFronted", "ApiFronted\ApiFronted.csproj", "{D3DF8A68-C1A3-4007-B2EF-3818F091E50F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationTests", "ApplicationTests\ApplicationTests.csproj", "{BB3DE6E8-2E49-4B28-AFC9-DD89FD72A730}"
 EndProject

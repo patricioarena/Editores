@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using ApiAngular.Helper;
+using ApiFronted.Helper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
-using ApiAngular.Authorization.AuthorizationPolicies;
-using ApiAngular.Authorization.AuthorizationPolicies.MyFeature;
+using ApiFronted.Authorization.AuthorizationPolicies;
+using ApiFronted.Authorization.AuthorizationPolicies.MyFeature;
 
-namespace ApiAngular.Controllers
+namespace ApiFronted.Controllers
 {
     //[Route("api/[controller]")]
 #if DEBUG

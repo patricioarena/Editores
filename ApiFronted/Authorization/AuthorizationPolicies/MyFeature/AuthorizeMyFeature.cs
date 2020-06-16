@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ApiAngular.Authorization;
+using ApiFronted.Authorization;
 
-namespace ApiAngular.Authorization.AuthorizationPolicies
+namespace ApiFronted.Authorization.AuthorizationPolicies
 {
     public class AuthorizeMyFeature : AuthorizeAttribute
     {

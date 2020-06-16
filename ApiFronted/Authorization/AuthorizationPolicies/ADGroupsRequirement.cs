@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiAngular.Authorization.AuthorizationPolicies
+namespace ApiFronted.Authorization.AuthorizationPolicies
 {
     public class ADGroupsRequirement : IAuthorizationRequirement
     {

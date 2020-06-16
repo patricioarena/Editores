@@ -8,7 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApiAngular.Helper
+namespace ApiFronted.Helper
 {
     public class HttpHelperRestConections
     {
@@ -19,9 +19,10 @@ namespace ApiAngular.Helper
         {
             this.urlBackend = backendUrl;
             client = new WebClient();
-#if DEBUG
-            //WebProxy wp = new WebProxy("proxy1.fepba.gov.ar:8080");
-            //client.Proxy = wp;
+
+#if !DEBUG // <-- Sacar el ! para Trabajar en Fiscalia
+            WebProxy wp = new WebProxy("proxy1.fepba.gov.ar:8080");
+            client.Proxy = wp;
 #else
             client.Proxy = null;
 #endif

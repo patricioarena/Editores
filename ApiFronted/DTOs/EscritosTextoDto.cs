@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ApiAngular.DTOs
+namespace ApiFronted.DTOs
 {
     public partial class EscritosTextoDto
     {

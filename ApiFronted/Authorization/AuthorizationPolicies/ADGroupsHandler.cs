@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Threading.Tasks;
 
-namespace ApiAngular.Authorization.AuthorizationPolicies
+namespace ApiFronted.Authorization.AuthorizationPolicies
 {
     public class ADGroupsHandler<T> : AuthorizationHandler<T> where T : ADGroupsRequirement
     {

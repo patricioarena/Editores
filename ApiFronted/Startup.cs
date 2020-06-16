@@ -13,13 +13,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
-using ApiAngular.Authorization.AuthorizationPolicies;
+using ApiFronted.Authorization.AuthorizationPolicies;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
 
-namespace ApiAngular
+namespace ApiFronted
 {
     public class Startup
     {
