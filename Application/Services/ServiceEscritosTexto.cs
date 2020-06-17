@@ -41,11 +41,11 @@ namespace Application.Services
             return new DataAccess.DbManager(conn).ExecuteSingle<EscritosTexto>("dbo.GetUltimoEscritoTexto", null);
         }
 
-        public void SetEscritoTexto(EscritosTextoDto escritosTexto)
+        public int SetEscritoTexto(EscritosTextoDto escritosTexto)
         {
             EscritosTexto EscritosTexto = _Service.Mapper().Map<EscritosTexto>(escritosTexto);
             _Context.Set<EscritosTexto>().Add(EscritosTexto);
-            _Context.SaveChanges();
+            return _Context.SaveChanges();
         }
 
     }

@@ -9,7 +9,7 @@ namespace Application.IServices
         EscritosTexto GetEscritosTextoById(int escritoTextoID);
         List<EscritosTexto> GetAllEscritosTextos();
         EscritosTexto GetUltimoEscritosTexto();
-        void SetEscritoTexto(EscritosTextoDto escritosTexto);
+        int SetEscritoTexto(EscritosTextoDto escritosTexto);
 
     }
 }
