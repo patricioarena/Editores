@@ -69,7 +69,7 @@ namespace Application.Services.Tests
         }
 
         [Test]
-        public void GetAllEscritosTextos()
+        public void GetAllEscritosTextosTest()
         {
             ServiceEscritosTexto services = new ServiceEscritosTexto(_mockContex, _mockServiceFactory);
 
@@ -86,7 +86,7 @@ namespace Application.Services.Tests
         }
 
         [Test]
-        public void GetEscritosTextoById()
+        public void GetEscritosTextoByIdTest()
         {
             ServiceEscritosTexto services = new ServiceEscritosTexto(_mockContex, _mockServiceFactory);
 
