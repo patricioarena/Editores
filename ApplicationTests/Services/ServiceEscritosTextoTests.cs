@@ -20,7 +20,7 @@ using Application.Factory;
 using Autofac.Core;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
-using ApiBackend;
+using ApplicationTests;
 
 namespace Application.Services.Tests
 {
@@ -43,7 +43,7 @@ namespace Application.Services.Tests
             );
 
             //Mock Services
-            ILogger<Startup> logger = Mock.Of<ILogger<Startup>>();
+            ILogger<Object> logger = Mock.Of<ILogger<Object>>();
 
             Mock<IAbstractServiceFactory> mockServiceFactory = new Mock<IAbstractServiceFactory>();
             mockServiceFactory.Setup(a => a.Logger()).Returns(logger);
@@ -60,10 +60,10 @@ namespace Application.Services.Tests
         [Test()]
         public void SetEscritoTextoTest()
         {
-            ServiceEscritosTexto services = new ServiceEscritosTexto(_mockContex, _mockServiceFactory);
+            ServiceEscritosTexto service = new ServiceEscritosTexto(_mockContex, _mockServiceFactory);
 
             var testEntity = new EscritosTextoDto() { Titulo = "Por esparta !!", Texto = "Moq!!!!" };
-            var result = services.SetEscritoTexto(testEntity);
+            var result = service.SetEscritoTexto(testEntity);
 
             Assert.AreEqual(1, result);
         }
@@ -71,11 +71,11 @@ namespace Application.Services.Tests
         [Test]
         public void GetAllEscritosTextosTest()
         {
-            ServiceEscritosTexto services = new ServiceEscritosTexto(_mockContex, _mockServiceFactory);
+            ServiceEscritosTexto service = new ServiceEscritosTexto(_mockContex, _mockServiceFactory);
 
             List<EscritosTextoDto> list = new Fixture().CreateMany<EscritosTextoDto>().ToList();
-            list.ForEach(e => services.SetEscritoTexto(e));
-            var result = services.GetAllEscritosTextos();
+            list.ForEach(e => service.SetEscritoTexto(e));
+            var result = service.GetAllEscritosTextos();
 
             Assert.Multiple(() =>
             {
@@ -88,13 +88,13 @@ namespace Application.Services.Tests
         [Test]
         public void GetEscritosTextoByIdTest()
         {
-            ServiceEscritosTexto services = new ServiceEscritosTexto(_mockContex, _mockServiceFactory);
+            ServiceEscritosTexto service = new ServiceEscritosTexto(_mockContex, _mockServiceFactory);
 
             List<EscritosTextoDto> list = new Fixture().CreateMany<EscritosTextoDto>().ToList();
-            list.ForEach(e => services.SetEscritoTexto(e));
+            list.ForEach(e => service.SetEscritoTexto(e));
 
-            var result = services.GetAllEscritosTextos();
-            var aEscrito = services.GetEscritosTextoById(result[2].Id);
+            var result = service.GetAllEscritosTextos();
+            var aEscrito = service.GetEscritosTextoById(result[2].Id);
 
             Assert.Multiple(() =>
             {
@@ -109,7 +109,7 @@ namespace Application.Services.Tests
         [Test()]
         public void GetUltimoEscritosTextoTest()
         {
-            Assert.Ignore("Esto no se puede testear porque es un Store Procedure");
+            Assert.Ignore(Message.sp_NotAscertainable);
         }
     }
 }

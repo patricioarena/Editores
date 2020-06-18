@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <Configurations>Debug;Release;UAT;Production;Testing</Configurations>
+    <Configurations>Debug;Release;UAT;Production;Testing;Personal</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -12,6 +12,14 @@
     <WarningLevel>4</WarningLevel>
     <NoWarn>1701;1702;1591;</NoWarn>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Personal|AnyCPU'">
+    <DocumentationFile>bin\Personal\netcoreapp3.1\ApiBackend.xml</DocumentationFile>
+    <OutputPath>bin\Personal\netcoreapp3.1</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1701;1702;1591;</NoWarn>
+    <DefineConstants>PERSONAL;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -25,6 +33,7 @@
     <PackageReference Include="EntityFrameworkCore.Testing.NSubstitute" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.2.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1">
       <PrivateAssets>all</PrivateAssets>

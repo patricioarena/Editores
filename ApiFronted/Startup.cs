@@ -74,14 +74,13 @@ namespace ApiFronted
                 c.IncludeXmlComments(xmlPath);
             });
 
+            services.Configure<IISOptions>(options =>
+            {
+                options.AutomaticAuthentication = true;
+            });
+            services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
-            //services.Configure<IISOptions>(options =>
-            //{
-            //    options.AutomaticAuthentication = true;
-            //});
-            //services.AddAuthentication(IISDefaults.AuthenticationScheme);
-
-            //services.AddAuthorizationPolicies(Configuration); //importante!!
+            services.AddAuthorizationPolicies(Configuration); //importante!!
 
             _Logger.LogInformation("Added services in Startup");
         }
@@ -89,9 +88,9 @@ namespace ApiFronted
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
-#if DEBUG
+#if DEBUG || PERSONAL
             app.UseDeveloperExceptionPage();
-            _Logger.LogInformation("In Development environment");
+            _Logger.LogInformation($"In { env.EnvironmentName } environment");
 #endif
 
             app.UseHsts();
@@ -108,7 +107,7 @@ namespace ApiFronted
             app.UseRouting();
             app.UseCors("AllowAll");
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

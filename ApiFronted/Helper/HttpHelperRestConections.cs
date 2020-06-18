@@ -20,7 +20,7 @@ namespace ApiFronted.Helper
             this.urlBackend = backendUrl;
             client = new WebClient();
 
-#if !DEBUG // <-- Sacar el ! para Trabajar en Fiscalia
+#if DEBUG
             WebProxy wp = new WebProxy("proxy1.fepba.gov.ar:8080");
             client.Proxy = wp;
 #else

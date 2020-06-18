@@ -11,6 +11,7 @@ using Application.Services;
 using DataAccess;
 using Dominio.DTOs;
 using Dominio.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -20,6 +21,9 @@ namespace ApiBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+#if DEBUG || PERSONAL
+    [AllowAnonymous]
+#endif
     public class EscritosTextoController : CustomController
     {
 

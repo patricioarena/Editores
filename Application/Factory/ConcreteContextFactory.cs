@@ -30,7 +30,7 @@ namespace Application.Factory
 
         public POCDbContext CreatePOCDbContext()
         {
-            var GetConnectionString = _Configuration.GetConnectionString("SQLServer2");
+            var GetConnectionString = _Configuration.GetConnectionString("SQLServer");
             var dbContextOptionsBuilder = new DbContextOptionsBuilder<DbContext>();
             var optionsBuilder = dbContextOptionsBuilder.UseSqlServer(GetConnectionString);
             POCDbContext context = new POCDbContext(optionsBuilder.Options);

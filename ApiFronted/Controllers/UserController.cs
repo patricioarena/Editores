@@ -13,12 +13,10 @@ using ApiFronted.Authorization.AuthorizationPolicies.MyFeature;
 
 namespace ApiFronted.Controllers
 {
-    //[Route("api/[controller]")]
-#if DEBUG
+#if DEBUG || PERSONAL
     [Route("api")]
     [AllowAnonymous]
 #endif
-    //[AuthorizeMyFeature]
     public class UserController : Controller
     {
 

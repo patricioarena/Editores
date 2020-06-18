@@ -14,8 +14,9 @@ using ApiFronted.DTOs;
 
 namespace ApiFronted.Controllers
 {
-#if DEBUG
+#if DEBUG || PERSONAL
     [Route("api")]
+    [AllowAnonymous]
 #endif
     public class EscritosTextoController : Controller
     {
@@ -30,9 +31,6 @@ namespace ApiFronted.Controllers
             _RestHelper = new HttpHelperRestConections(configuration.GetSection("BackendeUrl").GetSection("url").Value);
         }
 
-#if DEBUG
-        [AllowAnonymous]
-#endif
         [HttpGet]
         [Route("GetAllEscritosTextos")]
         public JObject GetAllEscritosTextos()
@@ -41,9 +39,6 @@ namespace ApiFronted.Controllers
             return _RestHelper.restCallGet(uri, this);
         }
 
-#if DEBUG
-        [AllowAnonymous]
-#endif
         [HttpGet]
         [Route("GetEscritosTextoById/{escritoTextoID}")]
         public JObject Get(int escritoTextoID)
@@ -52,9 +47,6 @@ namespace ApiFronted.Controllers
             return _RestHelper.restCallGet(uri, this);
         }
 
-#if DEBUG
-        [AllowAnonymous]
-#endif
         [HttpGet]
         [Route("GetUltimoEscritosTexto")]
         public JObject GetUltimoEscritosTexto()
@@ -63,9 +55,6 @@ namespace ApiFronted.Controllers
             return _RestHelper.restCallGet(uri, this);
         }
 
-#if DEBUG
-        [AllowAnonymous]
-#endif
         [HttpPost]
         [Route("SetEscritoTexto")]
         public JObject SetEscritoTexto([FromBody] EscritosTextoDto aEscritoTexto)

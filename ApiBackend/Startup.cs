@@ -9,6 +9,7 @@ using Dominio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.CommandLine;
@@ -26,7 +27,6 @@ namespace ApiBackend
 {
     public class Startup
     {
-
         private static Context context = Context.POCDbContext; //<= Aca se cambia el contexto de la aplicacion
 
         private readonly ILogger _Logger;
@@ -101,12 +101,11 @@ namespace ApiBackend
                 c.IncludeXmlComments(xmlPath);
             });
 
-
-            //services.Configure<IISOptions>(options =>
-            //{
-            //    options.AutomaticAuthentication = true;
-            //});
-            //services.AddAuthentication(IISDefaults.AuthenticationScheme);
+            services.Configure<IISOptions>(options =>
+            {
+                options.AutomaticAuthentication = true;
+            });
+            services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
             _Logger.LogInformation("Added services in Startup");
         }
@@ -114,9 +113,9 @@ namespace ApiBackend
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-#if DEBUG
+#if DEBUG || PERSONAL
             app.UseDeveloperExceptionPage();
-            _Logger.LogInformation("In Development environment");
+            _Logger.LogInformation($"In { env.EnvironmentName } environment");
 #endif
 
             app.UseHsts();
@@ -130,11 +129,10 @@ namespace ApiBackend
                 option.RoutePrefix = string.Empty;
             });
 
-
             app.UseRouting();
             app.UseCors("AllowAll");
 
-            //app.UseAuthentication();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

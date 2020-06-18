@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
-    <Configurations>Debug;Release;UAT;Production;Testing</Configurations>
+    <Configurations>Debug;Release;UAT;Production;Testing;Personal</Configurations>
     <AssemblyName>ApiFronted</AssemblyName>
     <RootNamespace>ApiFronted</RootNamespace>
   </PropertyGroup>
@@ -14,6 +14,14 @@
     <WarningLevel>4</WarningLevel>
     <NoWarn>1701;1702;1591;</NoWarn>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Personal|AnyCPU'">
+    <DocumentationFile>bin\Personal\netcoreapp3.1\ApiFronted.xml</DocumentationFile>
+    <OutputPath>bin\Personal\netcoreapp3.1</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1701;1702;1591;</NoWarn>
+    <DefineConstants>PERSONAL;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
