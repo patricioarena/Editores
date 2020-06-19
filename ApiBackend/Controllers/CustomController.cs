@@ -1,7 +1,10 @@
 ﻿using ApiBackend.Results;
 using Application;
+using Application.IServices;
 using Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
 
@@ -9,6 +12,9 @@ namespace ApiBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+#if DEBUG || PERSONAL
+    [AllowAnonymous]
+#endif
     public class CustomController : Controller
     {
         public readonly IServiceEscritosTexto _ServiceEscritosTexto;

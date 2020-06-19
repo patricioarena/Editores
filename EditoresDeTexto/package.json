@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "compodoc": "compodoc -p tsconfig.json -s"
+    "compodoc": "compodoc -p tsconfig.json -s",
+    "dtt": "dotnet test ../"
   },
   "private": true,
   "dependencies": {

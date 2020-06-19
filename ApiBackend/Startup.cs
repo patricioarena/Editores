@@ -1,10 +1,15 @@
 ﻿using Application;
+using Application.Factory;
+using Application.IFactory;
+using Application.IServices;
 using Application.Services;
+using AutoMapper;
 using DataAccess;
 using Dominio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.CommandLine;
@@ -22,8 +27,7 @@ namespace ApiBackend
 {
     public class Startup
     {
-        private static OpenApiContact contact = new OpenApiContact { Email = "patricio.e.arena@gmail.com", Name = "Patricio Ernesto Antonio Arena" };
-        private static OpenApiInfo Info = new OpenApiInfo { Title = "Editor de texto", Version = "v1", Contact = contact };
+        private static Context context = Context.POCDbContext; //<= Aca se cambia el contexto de la aplicacion
 
         private readonly ILogger _Logger;
         public IConfiguration Configuration { get; }
@@ -33,7 +37,7 @@ namespace ApiBackend
             Configuration = configuration;
             _Logger = logger;
 
-            configuration["Context"] = Enum.GetName(typeof(Context), Context.POCDbContext); //<= Aca se cambia el contexto de la aplicacion
+            configuration["Context"] = Enum.GetName(typeof(Context), context); 
 
             var builder = new ConfigurationBuilder()
             .SetBasePath(env.ContentRootPath)
@@ -47,16 +51,48 @@ namespace ApiBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddScoped<IServiceEscritosTexto, ServiceEscritosTexto>();
-            services.AddScoped<IAbstractFactory, ConcreteFactory>();
+            services.AddScoped<IAbstractContextFactory, ConcreteContextFactory>();
+            services.AddScoped<IAbstractServiceFactory, ConcreteServiceFactory>();
+
+#pragma warning disable ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+            var serviceProvider = services.BuildServiceProvider();
+#pragma warning restore ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
+            
+            var logger = serviceProvider.GetService<ILogger<Startup>>();
+            services.AddSingleton(typeof(ILogger), logger);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddMvc().AddNewtonsoftJson(
                 options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
+
+            MapperConfiguration mc = new MapperConfiguration(e =>
+            {
+               e.AddProfile(new AutoMapperProfileConfiguration());
+            });
+
+            IMapper mapper = mc.CreateMapper();
+
+            services.AddSingleton(mapper);
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder => builder
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                );
+            });
+
+            OpenApiContact contact = new OpenApiContact { Email = "patricio.e.arena@gmail.com", Name = "Patricio Ernesto Antonio Arena" };
+            OpenApiInfo Info = new OpenApiInfo { Title = Configuration.GetSection("SwaggerOptions:Description").Value, Version = Configuration.GetSection("SwaggerOptions:Version").Value, Contact = contact };
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(Info.Version, Info);
@@ -65,54 +101,38 @@ namespace ApiBackend
                 c.IncludeXmlComments(xmlPath);
             });
 
-            services.AddCors(options =>
+            services.Configure<IISOptions>(options =>
             {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                );
+                options.AutomaticAuthentication = true;
             });
+            services.AddAuthentication(IISDefaults.AuthenticationScheme);
 
-            //services.Configure<IISOptions>(options =>
-            //{
-            //    options.AutomaticAuthentication = true;
-            //});
-            //services.AddAuthentication(IISDefaults.AuthenticationScheme);
-
-            _Logger.LogInformation("Added services");
+            _Logger.LogInformation("Added services in Startup");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+#if DEBUG || PERSONAL
+            app.UseDeveloperExceptionPage();
+            _Logger.LogInformation($"In { env.EnvironmentName } environment");
+#endif
+
+            app.UseHsts();
             app.UseSwagger();
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                _Logger.LogInformation("In Development environment");
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseSwaggerUI(c =>
+            app.UseSwaggerUI(option =>
             {
-                c.SwaggerEndpoint($"/swagger/{Info.Version}/swagger.json", $"{Info.Title} {Info.Version}");
-                c.RoutePrefix = string.Empty;
+                option.SwaggerEndpoint(Configuration.GetSection("SwaggerOptions:UIEndpoint").Value, $"{ env.EnvironmentName} - {Configuration.GetSection("SwaggerOptions:Version").Value}");
+                option.RoutePrefix = string.Empty;
             });
 
-
             app.UseRouting();
-            app.UseCors("CorsPolicy");
+            app.UseCors("AllowAll");
 
-            //app.UseAuthentication();
-            //app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {

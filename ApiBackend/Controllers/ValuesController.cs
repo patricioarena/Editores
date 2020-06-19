@@ -11,6 +11,10 @@ using Newtonsoft.Json.Linq;
 namespace ApiBackend.Controllers
 {
     [Route("api/[controller]")]
+    [ApiController]
+#if DEBUG || PERSONAL
+    [AllowAnonymous]
+#endif
     public class ValuesController : ControllerBase
     {
         private readonly IHttpContextAccessor _HttpContext;

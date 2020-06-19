@@ -24,14 +24,14 @@ export class EditorService {
   }
 
   nuevoEscritoTexto(escritoTexto): Observable<EscritoTexto> {
-    const url = `${this.apiurl}/nuevo`;
+    const url = `${this.apiurl}/SetEscritoTexto`;
     return this.HttpClient
       .post<ResponseApi<EscritoTexto>>(url, escritoTexto)
       .pipe(map(res => res.data));
     }
 
   nuevoEscritoTexto2(escritoTexto): Observable<EscritoTexto> {
-    const url = `${this.apiurl}EscritosTexto/nuevo`;
+    const url = `${this.apiurl}EscritosTexto/SetEscritoTexto`;
     return this.HttpClient.post( url, escritoTexto, {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/json')

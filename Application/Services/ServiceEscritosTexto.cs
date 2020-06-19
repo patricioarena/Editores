@@ -1,9 +1,15 @@
-﻿using DataAccess;
+﻿using Application.IFactory;
+using Application.IServices;
+using AutoMapper;
+using Dominio.DTOs;
 using Dominio.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 
 namespace Application.Services
@@ -11,13 +17,15 @@ namespace Application.Services
     public class ServiceEscritosTexto : IServiceEscritosTexto
     {
         private readonly DbContext _Context;
+        private readonly IAbstractServiceFactory _Service;
 
-        public ServiceEscritosTexto(IAbstractFactory factory)
+        public ServiceEscritosTexto(IAbstractContextFactory Factory, IAbstractServiceFactory service)
         {
-            _Context = factory.Create();
+            _Context = Factory.CreateContext();
+            _Service = service;
         }
 
-        public List<EscritosTexto> GetEscritosTextos()
+        public List<EscritosTexto> GetAllEscritosTextos()
         {
             return _Context.Set<EscritosTexto>().ToList();
         }
@@ -27,10 +35,18 @@ namespace Application.Services
             return _Context.Set<EscritosTexto>().Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
         }
 
-        public void SetEscritoTexto(EscritosTexto escritosTexto)
+        public EscritosTexto GetUltimoEscritosTexto()
         {
-            _Context.Set<EscritosTexto>().Add(escritosTexto);
-            _Context.SaveChanges();
+            string conn = _Context.Database.GetDbConnection().ConnectionString;
+            return new DataAccess.DbManager(conn).ExecuteSingle<EscritosTexto>("dbo.GetUltimoEscritoTexto", null);
         }
+
+        public int SetEscritoTexto(EscritosTextoDto escritosTexto)
+        {
+            EscritosTexto EscritosTexto = _Service.Mapper().Map<EscritosTexto>(escritosTexto);
+            _Context.Set<EscritosTexto>().Add(EscritosTexto);
+            return _Context.SaveChanges();
+        }
+
     }
 }

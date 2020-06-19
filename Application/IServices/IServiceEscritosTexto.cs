@@ -1,12 +1,15 @@
-﻿using Dominio.Entities;
+﻿using Dominio.DTOs;
+using Dominio.Entities;
 using System.Collections.Generic;
 
-namespace Application.Services
+namespace Application.IServices
 {
     public interface IServiceEscritosTexto
     {
         EscritosTexto GetEscritosTextoById(int escritoTextoID);
-        List<EscritosTexto> GetEscritosTextos();
-        void SetEscritoTexto(EscritosTexto escritosTexto);
+        List<EscritosTexto> GetAllEscritosTextos();
+        EscritosTexto GetUltimoEscritosTexto();
+        int SetEscritoTexto(EscritosTextoDto escritosTexto);
+
     }
 }

@@ -1,67 +1,78 @@
-﻿using ApiFrontend.Controllers;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Security.Principal;
 using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Cors;
-using Models;
+using ApiFronted.Helper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
+using ApiFronted.Authorization.AuthorizationPolicies;
+using ApiFronted.Authorization.AuthorizationPolicies.MyFeature;
+using ApiFronted.DTOs;
+using Microsoft.Extensions.Logging;
 
-namespace ApiFrontend.Controllers
+namespace ApiFronted.Controllers
 {
-#if DEBUG
-    [RoutePrefix("api")]
+#if DEBUG || PERSONAL
+    [Route("api")]
+    [AllowAnonymous]
 #endif
-    public class EscritosTextoController : ApiController
+    public class EscritosTextoController : Controller
     {
-        private readonly HttpHelperRestConections restHelper;
-        public EscritosTextoController()
+        private readonly IAuthorizationService _AuthorizationService;
+        private readonly IHttpHelperRestConections _RestHelper;
+        private readonly ILogger<EscritosTextoController> _Logger;
+        public EscritosTextoController(IConfiguration configuration, IAuthorizationService authorizationService, ILogger<EscritosTextoController> logger , IHttpHelperRestConections helperRestConections)
         {
-            restHelper = new HttpHelperRestConections();
+            _Logger = logger;
+            _AuthorizationService = authorizationService;
+            _RestHelper = helperRestConections;
         }
 
-#if DEBUG
-        [AllowAnonymous]
-#endif
         [HttpGet]
         [Route("GetAllEscritosTextos")]
         public JObject GetAllEscritosTextos()
         {
             var uri = "api/EscritosTexto/GetAllEscritosTextos";
-            return restHelper.restCallGet(uri, this);
+            var response =  _RestHelper.restCallGet(uri, this);
+            _Logger.LogInformation(response.ToString());
+            return response;
         }
 
-#if DEBUG
-        [AllowAnonymous]
-#endif
         [HttpGet]
-        [Route("escritoTexto/{escritoTextoID}")]
+        [Route("GetEscritosTextoById/{escritoTextoID}")]
         public JObject Get(int escritoTextoID)
         {
-            var uri = "api/EscritosTexto/escritoTexto/" + escritoTextoID;
-            return restHelper.restCallGet(uri, this);
+            var uri = "api/EscritosTexto/GetEscritosTextoById/" + escritoTextoID;
+            var response =  _RestHelper.restCallGet(uri, this);
+            _Logger.LogInformation(response.ToString());
+            return response;
         }
 
-#if DEBUG
-        [AllowAnonymous]
-#endif
-        [HttpPost]
-        [Route("nuevo")]
-        public JObject postEscritosTexto([FromBody]EscritosTexto aEscritoTexto)
+        [HttpGet]
+        [Route("GetUltimoEscritosTexto")]
+        public JObject GetUltimoEscritosTexto()
         {
-            var uri = "api/EscritosTexto/nuevo";
-            return restHelper.restCallPost(uri, aEscritoTexto, this);
+            var uri = "api/EscritosTexto/GetUltimoEscritosTexto";
+            var response =  _RestHelper.restCallGet(uri, this);
+            _Logger.LogInformation(response.ToString());
+            return response;
+        }
+
+        [HttpPost]
+        [Route("SetEscritoTexto")]
+        public JObject SetEscritoTexto([FromBody] EscritosTextoDto aEscritoTexto)
+        {
+            var uri = "api/EscritosTexto/SetEscritoTexto";
+            var response = _RestHelper.restCallPost(uri, aEscritoTexto, this);
+
+            _Logger.LogInformation(response.ToString());
+            return response;
         }
     }
-
-
 }
+
 
 

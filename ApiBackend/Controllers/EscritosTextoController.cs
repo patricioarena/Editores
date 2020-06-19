@@ -6,9 +6,12 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using ApiBackend.Results;
 using Application;
+using Application.IServices;
 using Application.Services;
 using DataAccess;
+using Dominio.DTOs;
 using Dominio.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +21,9 @@ namespace ApiBackend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+#if DEBUG || PERSONAL
+    [AllowAnonymous]
+#endif
     public class EscritosTextoController : CustomController
     {
 
@@ -28,7 +34,7 @@ namespace ApiBackend.Controllers
         }
 
         [HttpGet("GetAllEscritosTextos")]
-        public IActionResult GetEscritosTextos()
+        public IActionResult GetAllEscritosTextos()
         {
             try
             {
@@ -38,7 +44,8 @@ namespace ApiBackend.Controllers
                 //    listaEscritosTexto = _Context.EscritosTexto.ToList();
                 //});
                 //listaEscritosTexto = _Context.CreateReal().EscritosTexto.ToList();
-                listaEscritosTexto = _ServiceEscritosTexto.GetEscritosTextos();
+                listaEscritosTexto = _ServiceEscritosTexto.GetAllEscritosTextos();
+                _Logger.LogInformation("Returned all records!!");
                 return Ok(new ResponseApi<List<EscritosTexto>>(HttpStatusCode.OK, "ListaEscritosTexto", listaEscritosTexto));
             }
             catch (System.Exception ex)
@@ -48,8 +55,8 @@ namespace ApiBackend.Controllers
             }
         }
 
-        [HttpGet("escritoTexto/{escritoTextoID}")]
-        public IActionResult Get(int escritoTextoID)
+        [HttpGet("GetEscritosTextoById/{escritoTextoID}")]
+        public IActionResult GetEscritosTextoById(int escritoTextoID)
         {
             try
             {
@@ -59,6 +66,7 @@ namespace ApiBackend.Controllers
                 //    escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
                 //});
                 escritoTexto = _ServiceEscritosTexto.GetEscritosTextoById(escritoTextoID);
+                _Logger.LogInformation($"Returned record { escritoTexto.Id } !!");
                 return Ok(new ResponseApi<EscritosTexto>(HttpStatusCode.OK, "EscritoTexto", escritoTexto));
             }
             catch (System.Exception ex)
@@ -68,8 +76,33 @@ namespace ApiBackend.Controllers
             }
         }
 
-        [HttpPost("nuevo")]
-        public IActionResult Post([FromBody]EscritosTexto escritosTexto)
+        /// <summary>
+        /// Se usa store procedure para probar DbManager
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetUltimoEscritosTexto")]
+        public IActionResult GetUltimoEscritosTexto()
+        {
+            try
+            {
+                //var callerIdentity = User.Identity as WindowsIdentity;
+                EscritosTexto escritoTexto = null;
+                //WindowsIdentity.RunImpersonated(callerIdentity.AccessToken, () => {
+                //    escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
+                //});
+                escritoTexto = _ServiceEscritosTexto.GetUltimoEscritosTexto();
+                _Logger.LogInformation("Returned last record!!");
+                return Ok(new ResponseApi<EscritosTexto>(HttpStatusCode.OK, "EscritoTexto", escritoTexto));
+            }
+            catch (System.Exception ex)
+            {
+                _Logger.LogError(ex.Message);
+                return CustomErrorStatusCode(ex);
+            }
+        }
+
+        [HttpPost("SetEscritoTexto")]
+        public IActionResult SetEscritoTexto([FromBody] EscritosTextoDto escritosTexto)
         {
             try
             {

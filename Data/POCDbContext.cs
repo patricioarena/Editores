@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
-    public partial class POCDbContext : DbContextAbstract
+    public partial class POCDbContext : AbstractDbContext
     {
         public POCDbContext() : base() { }
         public POCDbContext(DbContextOptions<DbContext> options) : base(options) { }
@@ -13,7 +13,10 @@ namespace DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured) { }
+            if (!optionsBuilder.IsConfigured)
+            {
+                //optionsBuilder.UseSqlServer("Data Source=DESKTOP-ON7GE0B\\SQLEXPRESS;Initial Catalog=POC;Integrated Security=True;App=EntityFramework;");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
