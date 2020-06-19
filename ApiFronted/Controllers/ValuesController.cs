@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 
-namespace ApiBackend.Controllers
+namespace ApiFronted.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : ControllerBase

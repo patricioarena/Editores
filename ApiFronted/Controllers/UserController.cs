@@ -19,16 +19,13 @@ namespace ApiFronted.Controllers
 #endif
     public class UserController : Controller
     {
+        private readonly IHttpHelperRestConections _HttpHelperRestConections;
+        private readonly IAuthorizationService _AuthorizationService;
 
-        IConfiguration configuration;
-        HttpHelperRestConections httpHelperRestConections;
-        private readonly IAuthorizationService authorizationService;
-
-        public UserController(IConfiguration configuration, IAuthorizationService authorizationService)
+        public UserController(IAuthorizationService authorizationService, IHttpHelperRestConections httpHelperRestConections)
         {
-            this.configuration = configuration;
-            this.authorizationService = authorizationService;
-            httpHelperRestConections = new HttpHelperRestConections(configuration.GetSection("BackendeUrl").GetSection("url").Value);
+            _AuthorizationService = authorizationService;
+            _HttpHelperRestConections = httpHelperRestConections;
         }
 
 
@@ -36,9 +33,9 @@ namespace ApiFronted.Controllers
         public JObject GetUser()
         {
             var uri = "api/user/";
-            return httpHelperRestConections.restCallGet(uri, this);
+            return _HttpHelperRestConections.restCallGet(uri, this);
         }
 
- 
+
     }
 }

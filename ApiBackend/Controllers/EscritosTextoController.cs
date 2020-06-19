@@ -45,6 +45,7 @@ namespace ApiBackend.Controllers
                 //});
                 //listaEscritosTexto = _Context.CreateReal().EscritosTexto.ToList();
                 listaEscritosTexto = _ServiceEscritosTexto.GetAllEscritosTextos();
+                _Logger.LogInformation("Returned all records!!");
                 return Ok(new ResponseApi<List<EscritosTexto>>(HttpStatusCode.OK, "ListaEscritosTexto", listaEscritosTexto));
             }
             catch (System.Exception ex)
@@ -65,6 +66,7 @@ namespace ApiBackend.Controllers
                 //    escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
                 //});
                 escritoTexto = _ServiceEscritosTexto.GetEscritosTextoById(escritoTextoID);
+                _Logger.LogInformation($"Returned record { escritoTexto.Id } !!");
                 return Ok(new ResponseApi<EscritosTexto>(HttpStatusCode.OK, "EscritoTexto", escritoTexto));
             }
             catch (System.Exception ex)
@@ -89,6 +91,7 @@ namespace ApiBackend.Controllers
                 //    escritoTexto = _Context.EscritosTexto.Where(e => e.Id.Equals(escritoTextoID)).FirstOrDefault();
                 //});
                 escritoTexto = _ServiceEscritosTexto.GetUltimoEscritosTexto();
+                _Logger.LogInformation("Returned last record!!");
                 return Ok(new ResponseApi<EscritosTexto>(HttpStatusCode.OK, "EscritoTexto", escritoTexto));
             }
             catch (System.Exception ex)
@@ -97,9 +100,9 @@ namespace ApiBackend.Controllers
                 return CustomErrorStatusCode(ex);
             }
         }
-        
+
         [HttpPost("SetEscritoTexto")]
-        public IActionResult SetEscritoTexto([FromBody]EscritosTextoDto escritosTexto)
+        public IActionResult SetEscritoTexto([FromBody] EscritosTextoDto escritosTexto)
         {
             try
             {

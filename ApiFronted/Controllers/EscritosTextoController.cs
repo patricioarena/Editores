@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using ApiFronted.Authorization.AuthorizationPolicies;
 using ApiFronted.Authorization.AuthorizationPolicies.MyFeature;
 using ApiFronted.DTOs;
+using Microsoft.Extensions.Logging;
 
 namespace ApiFronted.Controllers
 {
@@ -20,15 +21,14 @@ namespace ApiFronted.Controllers
 #endif
     public class EscritosTextoController : Controller
     {
-
-        private readonly IConfiguration _Configuration;
-        //private readonly IAuthorizationService _AuthorizationService;
-        private readonly HttpHelperRestConections _RestHelper;
-        public EscritosTextoController(IConfiguration configuration, IAuthorizationService authorizationService)
+        private readonly IAuthorizationService _AuthorizationService;
+        private readonly IHttpHelperRestConections _RestHelper;
+        private readonly ILogger<EscritosTextoController> _Logger;
+        public EscritosTextoController(IConfiguration configuration, IAuthorizationService authorizationService, ILogger<EscritosTextoController> logger , IHttpHelperRestConections helperRestConections)
         {
-            _Configuration = configuration;
-            //_AuthorizationService = authorizationService;
-            _RestHelper = new HttpHelperRestConections(configuration.GetSection("BackendeUrl").GetSection("url").Value);
+            _Logger = logger;
+            _AuthorizationService = authorizationService;
+            _RestHelper = helperRestConections;
         }
 
         [HttpGet]
@@ -36,7 +36,9 @@ namespace ApiFronted.Controllers
         public JObject GetAllEscritosTextos()
         {
             var uri = "api/EscritosTexto/GetAllEscritosTextos";
-            return _RestHelper.restCallGet(uri, this);
+            var response =  _RestHelper.restCallGet(uri, this);
+            _Logger.LogInformation(response.ToString());
+            return response;
         }
 
         [HttpGet]
@@ -44,7 +46,9 @@ namespace ApiFronted.Controllers
         public JObject Get(int escritoTextoID)
         {
             var uri = "api/EscritosTexto/GetEscritosTextoById/" + escritoTextoID;
-            return _RestHelper.restCallGet(uri, this);
+            var response =  _RestHelper.restCallGet(uri, this);
+            _Logger.LogInformation(response.ToString());
+            return response;
         }
 
         [HttpGet]
@@ -52,7 +56,9 @@ namespace ApiFronted.Controllers
         public JObject GetUltimoEscritosTexto()
         {
             var uri = "api/EscritosTexto/GetUltimoEscritosTexto";
-            return _RestHelper.restCallGet(uri, this);
+            var response =  _RestHelper.restCallGet(uri, this);
+            _Logger.LogInformation(response.ToString());
+            return response;
         }
 
         [HttpPost]
@@ -60,7 +66,10 @@ namespace ApiFronted.Controllers
         public JObject SetEscritoTexto([FromBody] EscritosTextoDto aEscritoTexto)
         {
             var uri = "api/EscritosTexto/SetEscritoTexto";
-            return _RestHelper.restCallPost(uri, aEscritoTexto, this);
+            var response = _RestHelper.restCallPost(uri, aEscritoTexto, this);
+
+            _Logger.LogInformation(response.ToString());
+            return response;
         }
     }
 }

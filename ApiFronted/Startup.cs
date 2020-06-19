@@ -18,6 +18,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.IO;
+using Microsoft.AspNetCore.Http;
+using ApiFronted.Helper;
 
 namespace ApiFronted
 {
@@ -45,10 +47,12 @@ namespace ApiFronted
 #pragma warning disable ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
             var serviceProvider = services.BuildServiceProvider();
 #pragma warning restore ASP0000 // Do not call 'IServiceCollection.BuildServiceProvider' in 'ConfigureServices'
-            
+
             var logger = serviceProvider.GetService<ILogger<Startup>>();
             services.AddSingleton(typeof(ILogger), logger);
 
+            services.AddSingleton<IHttpHelperRestConections, HttpHelperRestConections>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddMvc().AddNewtonsoftJson(
                 options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
