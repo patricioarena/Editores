@@ -9,33 +9,48 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp3.1\ApiFronted.xml</DocumentationFile>
-    <OutputPath>bin\Debug\netcoreapp3.1</OutputPath>
+    <DocumentationFile>bin\Debug\ApiFronted\ApiFronted.xml</DocumentationFile>
+    <OutputPath>bin\Debug\ApiFronted</OutputPath>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1701;1702;1591;</NoWarn>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Personal|AnyCPU'">
-    <DocumentationFile>bin\Personal\netcoreapp3.1\ApiFronted.xml</DocumentationFile>
-    <OutputPath>bin\Personal\netcoreapp3.1</OutputPath>
+    <DocumentationFile>bin\Personal\ApiFronted\ApiFronted.xml</DocumentationFile>
+    <OutputPath>bin\Personal\ApiFronted</OutputPath>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1701;1702;1591;</NoWarn>
     <DefineConstants>PERSONAL;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netcoreapp3.1\$(AssemblyName).xml</DocumentationFile>
-    <OutputPath>bin\Release\netcoreapp3.1</OutputPath>
+    <DocumentationFile>bin\Release\ApiFronted\ApiFronted.xml</DocumentationFile>
+    <OutputPath>bin\Release\ApiFronted</OutputPath>
   </PropertyGroup>
-  
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Production|AnyCPU'">
+    <DocumentationFile>bin\Production\ApiFronted\ApiFronted.xml</DocumentationFile>
+    <OutputPath>bin\Production\ApiFronted</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Testing|AnyCPU'">
+    <DocumentationFile>bin\Testing\ApiFronted\ApiFronted.xml</DocumentationFile>
+    <OutputPath>bin\Testing\ApiFronted</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UAT|AnyCPU'">
+    <DocumentationFile>bin\UAT\ApiFronted\ApiFronted.xml</DocumentationFile>
+    <OutputPath>bin\UAT\ApiFronted</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.5" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Content Update="appsettings.Debug.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
@@ -53,7 +68,7 @@
     </Content>
   </ItemGroup>
 
-  <!--<ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" appsettings_1debug_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" appsettings_1debug_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="copy /Y &quot;$(SolutionDir)\$(AssemblyName)\appsettings.$(Configuration).json&quot; &quot;$(SolutionDir)\$(AssemblyName)\appsettings.Production.json" />

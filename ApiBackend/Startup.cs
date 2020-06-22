@@ -9,6 +9,7 @@ using Dominio;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.Server.IISIntegration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -128,6 +129,8 @@ namespace ApiBackend
                 option.SwaggerEndpoint(Configuration.GetSection("SwaggerOptions:UIEndpoint").Value, $"{ env.EnvironmentName} - {Configuration.GetSection("SwaggerOptions:Version").Value}");
                 option.RoutePrefix = string.Empty;
             });
+
+            app.UseRewriter(new RewriteOptions().AddRedirect("^$", "swagger"));
 
             app.UseRouting();
             app.UseCors("AllowAll");

@@ -7,24 +7,39 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp3.1\ApiBackend.xml</DocumentationFile>
-    <OutputPath>bin\Debug\netcoreapp3.1</OutputPath>
+    <DocumentationFile>bin\Debug\ApiBackend\ApiBackend.xml</DocumentationFile>
+    <OutputPath>bin\Debug\ApiBackend</OutputPath>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1701;1702;1591;</NoWarn>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Personal|AnyCPU'">
-    <DocumentationFile>bin\Personal\netcoreapp3.1\ApiBackend.xml</DocumentationFile>
-    <OutputPath>bin\Personal\netcoreapp3.1</OutputPath>
+    <DocumentationFile>bin\Personal\ApiBackend\ApiBackend.xml</DocumentationFile>
+    <OutputPath>bin\Personal\ApiBackend</OutputPath>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1701;1702;1591;</NoWarn>
     <DefineConstants>PERSONAL;TRACE</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netcoreapp3.1\ApiBackend.xml</DocumentationFile>
-    <OutputPath>bin\Release\netcoreapp3.1</OutputPath>
+    <DocumentationFile>bin\Release\ApiBackend\ApiBackend.xml</DocumentationFile>
+    <OutputPath>bin\Release\ApiBackend</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Production|AnyCPU'">
+    <DocumentationFile>bin\Production\ApiBackend\ApiBackend.xml</DocumentationFile>
+    <OutputPath>bin\Production\ApiBackend</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Testing|AnyCPU'">
+    <DocumentationFile>bin\Testing\ApiBackend\ApiBackend.xml</DocumentationFile>
+    <OutputPath>bin\Testing\ApiBackend</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='UAT|AnyCPU'">
+    <DocumentationFile>bin\UAT\ApiBackend\ApiBackend.xml</DocumentationFile>
+    <OutputPath>bin\UAT\ApiBackend</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -55,4 +70,32 @@
     <ProjectReference Include="..\Data\DataAccess.csproj" />
   </ItemGroup>
 
+  <!--<ItemGroup>
+    <Content Update="appsettings.Debug.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.Release.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.Testing.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.UAT.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties properties_4launchsettings_1json__JsonSchema="" appsettings_1debug_1json__JsonSchema="" />
+    </VisualStudio>
+  </ProjectExtensions>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="copy /Y &quot;$(SolutionDir)\$(AssemblyName)\appsettings.$(Configuration).json&quot; &quot;$(SolutionDir)\$(AssemblyName)\appsettings.Production.json" />
+  </Target>-->
+  
 </Project>
