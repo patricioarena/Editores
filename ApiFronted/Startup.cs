@@ -108,6 +108,8 @@ namespace ApiFronted
                 option.RoutePrefix = string.Empty;
             });
 
+            app.UseRewriter(new RewriteOptions().AddRedirect("^$", "swagger"));
+
             app.UseRouting();
             app.UseCors("AllowAll");
 
