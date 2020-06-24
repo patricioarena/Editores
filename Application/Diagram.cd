@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Application.Factory.ConcreteContextFactory" BaseTypeListCollapsed="true">
+    <Position X="8" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAEAAAAAAEAAAAAAAAAAACABAA=</HashCode>
+      <FileName>Factory\ConcreteContextFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Factory.ConcreteServiceFactory" BaseTypeListCollapsed="true">
+    <Position X="4.25" Y="2.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAACAAAAAQAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Factory\ConcreteServiceFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.Services.ServiceEscritosTexto" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="4.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAACAAAAAAAAAAAAAAAAAAEAAAAQAAAAAAAAEAA=</HashCode>
+      <FileName>Services\ServiceEscritosTexto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Application.AutoMapperProfileConfiguration">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AutoMapperProfileConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Application.IFactory.IAbstractContextFactory">
+    <Position X="8" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>IFactory\IAbstractContextFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Application.IFactory.IAbstractServiceFactory">
+    <Position X="4.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IFactory\IAbstractServiceFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Application.IServices.IServiceEscritosTexto">
+    <Position X="0.5" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>IServices\IServiceEscritosTexto.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Application.Factory.Context">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Factory\ConcreteContextFactory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

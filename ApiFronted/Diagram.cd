@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ApiFronted.Authorization.AuthorizationPolicies.AuthorizeMyFeature">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\AuthorizationPolicies\MyFeature\AuthorizeMyFeature.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Authorization.AuthorizationPolicies.ADGroupsConfiguration">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\AuthorizationPolicies\ADGroupsConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Authorization.AuthorizationPolicies.ADGroupsHandler&lt;T&gt;">
+    <Position X="5" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\AuthorizationPolicies\ADGroupsHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Authorization.AuthorizationPolicies.ADGroupsRequirement">
+    <Position X="5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\AuthorizationPolicies\ADGroupsRequirement.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ApiFronted.Authorization.AuthorizationPolicies.AuthorizationPolicyNames">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\AuthorizationPolicies\AuthorizationPolicyNames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Authorization.AuthorizationPolicies.RegisterDI">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Authorization\AuthorizationPolicies\RegisterDI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Authorization.AuthorizationPolicies.MyFeature.Handler" Collapsed="true">
+    <Position X="4.5" Y="7.5" Width="3" />
+    <InheritanceLine Type="ApiFronted.Authorization.AuthorizationPolicies.ADGroupsHandler&lt;T&gt;" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6" Y="7.127" />
+        <Point X="6" Y="7.655" />
+        <Point X="6.281" Y="7.655" />
+        <Point X="6.281" Y="7.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\AuthorizationPolicies\MyFeature\Handler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Authorization.AuthorizationPolicies.MyFeature.Requirement">
+    <Position X="5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Authorization\AuthorizationPolicies\MyFeature\Requirement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Controllers.EscritosTextoController">
+    <Position X="9.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAACAAAAAABAAAAAAAAAABEAAAAAAAAAAAAAIAQ=</HashCode>
+      <FileName>Controllers\EscritosTextoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Controllers.UserController">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Controllers.ValuesController">
+    <Position X="9.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAABAAAAAAAAAKAEAAAAAAAAACAAAAAo=</HashCode>
+      <FileName>Controllers\ValuesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.DTOs.EscritosTextoDto">
+    <Position X="12" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>DTOs\EscritosTextoDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Helper.HttpHelperRestConections" BaseTypeListCollapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAgAAQAAAAAAAAAAAAEBAAAAAAAAAAIIA=</HashCode>
+      <FileName>Helper\HttpHelperRestConections.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="ApiFronted.Program">
+    <Position X="0.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiFronted.Startup">
+    <Position X="0.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAACAAAIAA=</HashCode>
+      <FileName>Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="ApiFronted.Helper.IHttpHelperRestConections">
+    <Position X="3" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAAAAAAAAIA=</HashCode>
+      <FileName>Helper\HttpHelperRestConections.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Microsoft.AspNetCore.Authorization.IAuthorizationRequirement" Collapsed="true">
+    <Position X="5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

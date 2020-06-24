@@ -1,26 +1,17 @@
-﻿using NUnit.Framework;
-using Application.Services;
+﻿using Application.IFactory;
+using ApplicationTests;
+using AutoFixture;
+using AutoMapper;
+using DataAccess;
+using Dominio.DTOs;
+using EntityFrameworkCore.Testing.Moq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using DataAccess;
-using EntityFrameworkCore.Testing.Moq;
-using Dominio.Entities;
-using Dominio.DTOs;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Moq;
-using FluentAssertions;
-using System.Data.SqlClient;
-using EntityFrameworkCore.Testing.Moq.Extensions;
-using AutoFixture;
-using System.Threading.Tasks;
-using Application.IFactory;
-using Application.Factory;
-using Autofac.Core;
-using AutoMapper;
-using Microsoft.Extensions.Logging;
-using ApplicationTests;
 
 namespace Application.Services.Tests
 {

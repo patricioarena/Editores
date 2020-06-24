@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ApiBackend.Controllers.CustomController">
+    <Position X="3.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Controllers\CustomController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiBackend.Controllers.EscritosTextoController">
+    <Position X="3.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAMAA=</HashCode>
+      <FileName>Controllers\EscritosTextoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiBackend.Controllers.ValuesController">
+    <Position X="1" Y="5.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAABAAAAAAAAAKAEAAAAAAAAACAAAAAo=</HashCode>
+      <FileName>Controllers\ValuesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiBackend.Results.CustomException">
+    <Position X="9.25" Y="0.5" Width="2.75" />
+    <NestedTypes>
+      <Enum Name="ApiBackend.Results.CustomException.ErrorsEnum" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Results\CustomException.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAQAAAAAAAAAAAAAAABAIAAAAIAAQAAA=</HashCode>
+      <FileName>Results\CustomException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiBackend.Results.ResponseApi&lt;T&gt;">
+    <Position X="6.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAgAIAAAQAAAAASA=</HashCode>
+      <FileName>Results\ResponseApi.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiBackend.Program">
+    <Position X="1" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ApiBackend.Startup">
+    <Position X="1" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAAAAAAAAAAAAAgAAACAAAIAA=</HashCode>
+      <FileName>Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
