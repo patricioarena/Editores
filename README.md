@@ -10,19 +10,19 @@ La arquitectuda de la aplicación propuesta es un modelo de n-capas. [Más Infor
 
 </div>
 
-[image_ref_a30ff4ads]:https://github.com/patricioarena/Editores/blob/develop/Documentation/1.jpg
+[image_ref_a30ff4ads]:https://github.com/patricioarena/Editores/blob/develop/Documentation/VisionGeneral.jpg
 
 ## Fabrica de contextos
-<p>Tiene la responsabilidad de proveer el contexto requerido a cada uno de los servicios que requieran de 
+<p>Tiene la responsabilidad de proveer el contexto requerido a cada uno de los servicios que requieran de
 él.</p>
 
 ![][image_ref_a31ff4ads]
 
-[image_ref_a31ff4ads]:https://github.com/patricioarena/Editores/blob/develop/Documentation/2.jpg
+[image_ref_a31ff4ads]:https://github.com/patricioarena/Editores/blob/develop/Documentation/AbstractCotextFactory.jpg
 
 ## Fabrica de Servicios
 <p>La razon para implementar este patron es poseer una clase que actue de proveedor de servicios comunes
-que se utilizaran en todos los servicios pero que no sea necesario inyectarlos en cada nuevo servicio 
+que se utilizaran en todos los servicios pero que no sea necesario inyectarlos en cada nuevo servicio
 que creemos.</p>
 <div style="text-align:center">
 
@@ -30,7 +30,7 @@ que creemos.</p>
 
 </div>
 
-[image_ref_a32ff4ads]:https://github.com/patricioarena/Editores/blob/develop/Documentation/3.jpg
+[image_ref_a32ff4ads]:https://github.com/patricioarena/Editores/blob/develop/Documentation/AbstractServiceFactory.jpg
 
 ## Ejemplo de uso de las fabricas
 
@@ -40,11 +40,11 @@ que creemos.</p>
 
 </div>
 
-[image_ref_a33ff4ads]:https://github.com/patricioarena/Editores/blob/develop/Documentation/4.jpg
+[image_ref_a33ff4ads]:https://github.com/patricioarena/Editores/blob/develop/Documentation/Example.jpg
 
 ---
 
-### Más Documentación 
+### Más Documentación
 
 - *AngularCli →* ../EditoresDeTexto/README.md
 - *ApplicationTest →* ..ApplicationTests/README.md
