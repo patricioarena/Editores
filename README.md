@@ -46,5 +46,5 @@ que creemos.</p>
 
 ### Más Documentación
 
-- *AngularCli →* ../EditoresDeTexto/README.md
-- *ApplicationTest →* ..ApplicationTests/README.md
+- [*AngularCli →* ../EditoresDeTexto/README.md](https://github.com/patricioarena/Editores/tree/develop/EditoresDeTexto)
+- [*ApplicationTest →* ..ApplicationTests/README.md](https://github.com/patricioarena/Editores/tree/develop/ApplicationTests)
