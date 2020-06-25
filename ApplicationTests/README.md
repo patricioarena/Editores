@@ -129,4 +129,4 @@ Podemos correr los test desde el proyecto Angular utilizando el comando: **yarn 
 #### Salida en git bash al correr el test desde vs code utilizando el comando.
 ![][image_ref_a31ff4ads]
 
-[image_ref_a31ff4ads]:https://github.com/patricioarena/Editores/blob/develop/Documentation/SalidaGitBash.jpg
+[image_ref_a31ff4ads]:https://github.com/patricioarena/Editores/blob/develop/Documentation/SalidaGitBash.png
